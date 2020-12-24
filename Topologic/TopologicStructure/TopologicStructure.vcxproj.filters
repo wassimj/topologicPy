@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="include\Load.h" />
+    <ClInclude Include="include\LoadCluster.h" />
+    <ClInclude Include="include\OcctLoadAttribute.h">
+      <Filter>Label</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LoadAnalysis.h" />
+    <ClInclude Include="include\Context.h">
+      <Filter>Label</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LoadFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LoadClusterFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Load.cpp" />
+    <ClCompile Include="src\LoadCluster.cpp" />
+    <ClCompile Include="src\OcctLoadAttribute.cpp">
+      <Filter>Label</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LoadAnalysis.cpp" />
+    <ClCompile Include="src\Context.cpp">
+      <Filter>Label</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LoadFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LoadClusterFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Label">
+      <UniqueIdentifier>{3f788237-605a-4437-9e06-bbc7f5499845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{f913aab5-c179-429b-89a2-8a9018c8fdd7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,4 +1,5 @@
 import cppyy
+import os
 headers = [
 "Utilities.h",
 "About.h",
@@ -57,9 +58,11 @@ headers = [
 ]
 
 cppyy.add_include_path("/usr/local/include/opencascade")
-cppyy.add_include_path("./include/")
+base_dir = os.path.dirname(os.path.realpath(__file__))
+cppyy.add_include_path(base_dir + "/include")
 for header in headers:
-    cppyy.include("./include/"+header)
+    cppyy.include( base_dir + "/include/" + header )
+
 
 #cppyy.load_library("libTopologicCore.so")
 cppyy.load_library("TopologicCore")

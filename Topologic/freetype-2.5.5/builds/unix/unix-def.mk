@@ -12,7 +12,7 @@
 # indicate that you have read the license and understand and accept it
 # fully.
 
-SHELL := /bin/sh
+SHELL := /bin/bash
 
 TOP_DIR := $(shell cd $(TOP_DIR); pwd)
 
@@ -62,9 +62,9 @@ version_info := 17:4:11
 
 # Variables needed for `freetype-config' and `freetype.pc'.
 #
-REQUIRES_PRIVATE   := zlib
+REQUIRES_PRIVATE   := zlib, libpng, harfbuzz >= 0.9.19
 LIBS_PRIVATE       := 
-LIBSSTATIC_CONFIG  := -lfreetype -lz
+LIBSSTATIC_CONFIG  := -lfreetype -lz -lpng16 -lm -lz -lm -lz -lharfbuzz -lm -lglib-2.0 -pthread -lpcre -pthread -lgraphite2
 build_libtool_libs := 
 ft_version         := 17.4.11
 

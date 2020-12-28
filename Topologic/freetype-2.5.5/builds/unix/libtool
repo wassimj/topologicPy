@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 # Generated automatically by config.status () 
 # Libtool was configured on host name:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
@@ -57,10 +57,10 @@ build_old_libs=yes
 pic_mode=default
 
 # Whether or not to optimize for fast installation.
-fast_install=yes
+fast_install=needless
 
 # Shell to use when invoking shell scripts.
-SHELL="/bin/sh"
+SHELL="/bin/bash"
 
 # An echo program that protects backslashes.
 ECHO="printf %s\\n"
@@ -162,7 +162,7 @@ lock_old_archive_extraction=no
 LTCC="gcc"
 
 # LTCC compiler flags.
-LTCFLAGS="-g -O2  -DFT_CONFIG_OPTION_SYSTEM_ZLIB"
+LTCFLAGS="-g -O2  -DFT_CONFIG_OPTION_SYSTEM_ZLIB -I/usr/include/libpng16 -DFT_CONFIG_OPTION_USE_PNG -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -DFT_CONFIG_OPTION_USE_HARFBUZZ"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p' | sed '/ __gnu_lto/d'"
@@ -244,7 +244,7 @@ runpath_var=LD_RUN_PATH
 shlibpath_var=LD_LIBRARY_PATH
 
 # Is shlibpath searched before the hard-coded library search path?
-shlibpath_overrides_runpath=no
+shlibpath_overrides_runpath=yes
 
 # Format of library name prefix.
 libname_spec="lib\$name"
@@ -276,10 +276,10 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/gcc/x86_64-redhat-linux/8 /usr/lib64 /lib64 /usr/lib /lib "
+sys_lib_search_path_spec="/usr/lib/gcc/x86_64-linux-gnu/10 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib "
 
 # Run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib64//bind9-export/           "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu "
 
 # Whether dlopen is supported.
 dlopen_support=unknown
@@ -321,7 +321,7 @@ pic_flag=" -fPIC -DPIC"
 wl="-Wl,"
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag=""
+link_static_flag="-static"
 
 # Does compiler simultaneously support -c and -o options?
 compiler_c_o="yes"

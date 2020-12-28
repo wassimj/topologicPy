@@ -16,7 +16,7 @@
 
 #pragma once
 
-//#include <TopoDS_Shape.hxx>
+#include <TopoDS_Shape.hxx>
 
 #ifdef _WIN32
 #ifdef TOPOLOGICCORE_EXPORTS

@@ -35,11 +35,14 @@ python setup.py install
 There is an example test file we have used to test the module. This example, while basic, shows how you can
 use the Python/C++ to make calls directly to Topologic.
 
+Running the example:
+
 ```
-python ./cpython/example.py
+python ./example.py
 ```
 
 Example output
 ```
-
+Module output is:
+[0.0, 0.0, 0.0, 20.0, 20.0, 20.0]
 ```

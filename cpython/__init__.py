@@ -1,4 +1,5 @@
 import cppyy
+from cffi import FFI
 headers = [
 "About.h",
 "CellComplex.h",
@@ -58,7 +59,8 @@ headers = [
 for header in headers:
     cppyy.include(header)
 
-cppyy.load_library("topologic")
+#cppyy.load_library("libTopologicCore.so")
+cppyy.load_library("TopologicCore")
 
 from cppyy.gbl import About
 from cppyy.gbl import CellComplex

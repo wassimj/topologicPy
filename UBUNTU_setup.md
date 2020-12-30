@@ -44,7 +44,7 @@ cd freetype-2.9.1
 
 ### Step 3. Install FreeImage
 
-``
+```
 cd /usr/src/
 wget https://managedway.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip
 unzip FreeImage3180.zip
@@ -55,7 +55,7 @@ cd FreeImage && \
 
 ### Step 4. Install OpenCascade
 
-``
+```
 cd /usr/src/
 wget https://github.com/tpaviot/oce/releases/download/official-upstream-packages/opencascade-7.4.0.tgz
 cd opencascade-7.4.0
@@ -68,7 +68,7 @@ mkdir build && \
 
 ### Step 5. Install Topologic
 
-``
+```
 cd /usr/src/
 git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
@@ -80,7 +80,7 @@ mkdir build && \
 
 ### Step 6. Setup Python bindings
 
-``
+```
 cd /usr/src/
 git clone https://matrixnad@bitbucket.org/matrixnad/wasim-cpython-topologic.git
 cd wasim-cpython-topologic

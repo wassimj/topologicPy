@@ -34,7 +34,7 @@ apt-get install -y bzip2 \
  
 ### Step 2. Install Freetype
 
-``
+```
 cd /usr/src/
 wget https://netactuate.dl.sourceforge.net/project/freetype/freetype2/2.9.1/freetype-2.9.1.tar.gz
 tar xvf freetype-2.9.1.tar.gz

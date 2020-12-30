@@ -18,5 +18,8 @@ setup(
     data_files=[('topologic/libs', ['libTopologicCore.so'],),
         ('topologic/include', [f for f in copy_dir("./include")]),
         ('topologic/include/Utilities', [f for f in copy_dir("./include/Utilities")])
+    ],
+    install_requires=[
+        'cppyy==1.9.1'
     ]
 )

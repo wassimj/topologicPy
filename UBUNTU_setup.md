@@ -92,4 +92,4 @@ python setup.py install
 
 ## Testing
 
-To test Topologic, please refer the test examples in [README.md](./README.md)
+To test Topologic, please refer to the test examples in [README.md](./README.md)

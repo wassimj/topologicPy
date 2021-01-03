@@ -83,7 +83,7 @@ mkdir build && \
 ```
 cd /usr/src/
 sudo git clone https://github.com/wassimj/topologic.git
-cd topologic
+cd Topologic
 cd cpython
 python3 setup.py build
 python3 setup.py install

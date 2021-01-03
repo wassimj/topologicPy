@@ -1,17 +1,18 @@
-from topologic import Vertex, Edge
-
+from topologic import Vertex, Edge, Topology
+print("START")
+print("1. Create Vertex (v1) at 0 0 0")
 v1 = Vertex.ByCoordinates(0,0,0)
+print("2. Create Vertex (v2) at 20 20 20")
 v2 = Vertex.ByCoordinates(20,20,20)
-l1 = Edge.ByStartVertexEndVertex(v1, v2)
-
-
-v1 = Vertex.ByCoordinates(0,0,0)
-v2 = Vertex.ByCoordinates(20,20,20)
-l1 = Edge.ByStartVertexEndVertex(v1, v2)
-
-sv = l1.StartVertex()
-ev = l1.EndVertex()
-# Assign your output to the OUT variable.
-OUT = [sv.X(), sv.Y(), sv.Z(), ev.X(), ev.Y(), ev.Z()]
-print("Module output is:")
-print(OUT)
+print("3. Create an Edge (e1) connecting v1 to v2")
+e1 = Edge.ByStartVertexEndVertex(v1, v2)
+print("4. Print the coordinates of the start vertext of e1:")
+sv = e1.StartVertex()
+print("   "+str([sv.X(), sv.Y(), sv.Z()]))
+print("5. Print the coordinates of the end vertext of e1:")
+ev = e1.EndVertex()
+print("   "+str([ev.X(), ev.Y(), ev.Z()]))
+print("5. Print the coordinates of the centroid of e1:")
+cv = Topology.Centroid(e1)
+print("   "+str([cv.X(), cv.Y(), cv.Z()]))
+print("DONE")

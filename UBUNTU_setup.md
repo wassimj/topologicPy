@@ -89,7 +89,49 @@ python3 setup.py build
 python3 setup.py install
 ```
 
-
 ## Testing
 
-To test Topologic, please refer to the test examples in [README.md](./README.md)
+## Build module
+
+You can use the Python setup scripts to build the module locally.
+
+To build the module:
+
+1. cd into ./cpython/
+```
+cd ./cpython/
+```
+2. Run build
+```
+python3 setup.py build
+```
+2. Run install
+```
+python3 setup.py install
+```
+
+## Run example
+
+There is an example test file we have used to test the module. This example, while basic, shows how you can
+use the Python/C++ to make calls directly to Topologic.
+
+Running the example:
+
+```
+python ./example.py
+```
+
+Example output
+```
+START
+1. Create Vertex (v1) at 0 0 0
+2. Create Vertex (v2) at 20 20 20
+3. Create an Edge (e1) connecting v1 to v2
+4. Print the coordinates of the start vertext of e1:
+   [0.0, 0.0, 0.0]
+5. Print the coordinates of the end vertext of e1:
+   [20.0, 20.0, 20.0]
+5. Print the coordinates of the centroid of e1:
+   [10.0, 10.0, 10.0]
+DONE
+```

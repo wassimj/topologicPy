@@ -1,19 +1,19 @@
-## About
+### About
 
 This module integrates a set of Python bindings for the Topologic module.
 
-# Installation on Ubuntu
+## Installation on Ubuntu
 
 This guide explains how to setup Topologic and its Python bindings on a fresh Ubuntu instance.
 
-# Requirements
+## Requirements
 
 Any recent version of Ubuntu should work. However it is recommended to use Ubuntu >= 20. During our testing
 we used: Ubuntu 20.10
 
-# Start Install
+## Start Install
 
-### Step 1. Update package manager
+# Step 1. Update package manager
 ```
 sudo apt-get install -y bzip2 \
 	cmake \
@@ -36,7 +36,7 @@ sudo apt-get install -y bzip2 \
 	&& apt-get update -y
 ```
  
-### Step 2. Install Freetype
+# Step 2. Install Freetype
 
 ```
 cd /usr/src/
@@ -46,7 +46,7 @@ cd freetype-2.9.1
 ./configure && make && make install
 ```
 
-### Step 3. Install FreeImage
+# Step 3. Install FreeImage
 
 ```
 cd /usr/src/
@@ -57,7 +57,7 @@ cd FreeImage && \
 	make install
 ```
 
-### Step 4. Install OpenCascade (this is very time-consuming. There may be a shorter method to get the files)
+# Step 4. Install OpenCascade (this is very time-consuming. There may be a shorter method to get the files)
 
 ```
 cd /usr/src/
@@ -76,7 +76,7 @@ mkdir build && \
 sudo pip3 install cppyy
 ```
 
-### Step 6. Install Topologic
+# Step 6. Install Topologic
 
 ```
 cd /usr/src/
@@ -88,7 +88,7 @@ mkdir build && \
 	make
 ```
 
-### Step 7. Setup Python bindings
+# Step 7. Setup Python bindings
 
 ```
 cd /usr/src/
@@ -99,7 +99,7 @@ python3 setup.py build
 python3 setup.py install
 ```
 
-## Testing
+# Testing
 
 You can use the Python setup scripts to build the module locally.
 
@@ -118,7 +118,7 @@ python3 setup.py build
 python3 setup.py install
 ```
 
-## Run example
+# Run example
 
 There is an example test file we have used to test the module. This example, while basic, shows how you can
 use the Python/C++ to make calls directly to Topologic.

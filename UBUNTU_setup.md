@@ -66,7 +66,13 @@ mkdir build && \
 	make install
 ```
 
-### Step 5. Install Topologic
+### Step 5. Install cppyy
+
+```
+sudo pip3 install cppyy
+```
+
+### Step 6. Install Topologic
 
 ```
 cd /usr/src/
@@ -78,7 +84,7 @@ mkdir build && \
 	make
 ```
 
-### Step 6. Setup Python bindings
+### Step 7. Setup Python bindings
 
 ```
 cd /usr/src/
@@ -90,8 +96,6 @@ python3 setup.py install
 ```
 
 ## Testing
-
-## Build module
 
 You can use the Python setup scripts to build the module locally.
 
@@ -118,7 +122,8 @@ use the Python/C++ to make calls directly to Topologic.
 Running the example:
 
 ```
-python ./example.py
+cd ..
+python3 ./example.py
 ```
 
 Example output

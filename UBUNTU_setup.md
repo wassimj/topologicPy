@@ -11,7 +11,7 @@ we used: Ubuntu 20.10
 
 ### Step 1. Update package manager
 ```
-apt-get install -y bzip2 \
+sudo apt-get install -y bzip2 \
 	cmake \
 	g++ \
 	git \
@@ -53,7 +53,7 @@ cd FreeImage && \
 	make install
 ```
 
-### Step 4. Install OpenCascade
+### Step 4. Install OpenCascade (this is very time-consuming. There may be a shorter method to get the files)
 
 ```
 cd /usr/src/
@@ -82,11 +82,11 @@ mkdir build && \
 
 ```
 cd /usr/src/
-git clone https://matrixnad@bitbucket.org/matrixnad/wasim-cpython-topologic.git
-cd wasim-cpython-topologic
+sudo git clone https://github.com/wassimj/topologic.git
+cd topologic
 cd cpython
-python setup.py build
-python setup.py install
+python3 setup.py build
+python3 setup.py install
 ```
 
 

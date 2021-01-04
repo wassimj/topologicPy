@@ -62,6 +62,7 @@ cd FreeImage && \
 ```
 cd /usr/src/
 wget https://github.com/tpaviot/oce/releases/download/official-upstream-packages/opencascade-7.4.0.tgz
+tar xvf opencascade-7.4.0.tgz
 cd opencascade-7.4.0
 mkdir build && \
 	cd build && \
@@ -75,8 +76,11 @@ mkdir build && \
 ```
 sudo pip3 install cppyy
 ```
-
-## Step 6. Install Topologic
+## Step 6. Add /usr/local/lib path
+```
+sudo ldconfig /usr/local/lib
+```
+## Step 7. Install Topologic
 
 ```
 cd /usr/src/
@@ -88,7 +92,7 @@ mkdir build && \
 	make
 ```
 
-## Step 7. Setup Python bindings
+## Step 8. Setup Python bindings
 
 ```
 cd /usr/src/

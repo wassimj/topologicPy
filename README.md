@@ -1,42 +1,92 @@
-# About
+This projects creates a Topologic python module from the Topologic C++ sources (included in this repo)
 
-This module integrates a set of Python bindings for the Topologic module.
 
-# Installation on Ubuntu
 
-This guide explains how to setup Topologic and its Python bindings on a fresh Ubuntu instance.
+### Install on Linux
 
-# Requirements
+Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too.
 
-Any recent version of Ubuntu should work. However it is recommended to use Ubuntu >= 20. During our testing
-we used: Ubuntu 20.10
+1. **Install dependencies**
 
-# Start Install
-
-## Step 1. Update package manager
 ```
-sudo apt-get install -y bzip2 \
-	cmake \
-	g++ \
-	git \
-	libharfbuzz-dev \
-	make \
-	libgl-dev \
-	libglu-dev \
-	libpng-dev \
-	libxmu-dev \
-	libxi-dev \
-	libtbb-dev \
-	tcl \
-	tcl-dev \
-	tk \
-	tk-dev \
-	unzip \
-	zlib1g-dev \
-	&& apt-get update -y
+sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
- 
-## Step 2. Install Freetype
+
+2. **Install cppyy via pip**: This is needed at runtime by the topologic module:
+
+```
+sudo pip3 install cppyy
+```
+3. **Build Topologic**
+
+```
+git clone https://github.com/wassimj/topologic.git
+mkdir build
+cd build
+cmake -DCMAKE_CXX_FLAGS=-I\ /usr/include/opencascade ../Topologic
+make
+```
+4. **Install the library** (On most debian-based distros, /usr/local/lib is not part of standard library paths. If we are going to use it here (which is the recommended location for self-compiled files), we need to run ldconfig afterwards):
+
+```
+sudo cp TopologicCore/libTopologicCore.so /usr/local/lib
+sudo ldconfig /usr/local/lib
+```
+
+5. **Install the python module**: This will install the python module locally, in your .local/lib/python* user folder, which does not require the use of *sudo*. For system-wide install, you can use `/usr/local/lib` in the command below instead of `~/.local/lib`.
+
+```
+cp -r ../cpython/topologic ~/.local/lib/python`{python3 -V | cut -b 8-10}`/site-packages
+```
+
+
+
+### Testing
+
+In a Python console, type:
+
+```
+import topologic
+```
+
+If no error message appears, everything was correctly installed.
+
+
+
+### Using the module
+
+There is an [example.py](example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
+
+```
+# import the topologic submodules
+from topologic import Vertex, Edge, Topology
+
+# create a vertex
+v1 = Vertex.ByCoordinates(0,0,0) 
+
+# create another vertex
+v2 = Vertex.ByCoordinates(20,20,20)
+
+# create an edge from the two vertices
+e1 = Edge.ByStartVertexEndVertex(v1, v2)
+
+# retrieve the coordinate from the start vertex of e1
+sv = e1.StartVertex()
+print("   "+str([sv.X(), sv.Y(), sv.Z()]))
+
+# retrieve the coordinate from the end vertex of e1
+ev = e1.EndVertex()
+print("   "+str([ev.X(), ev.Y(), ev.Z()]))
+
+# retrieve the coordinates of the centroid of e1
+cv = Topology.Centroid(e1)
+print("   "+str([cv.X(), cv.Y(), cv.Z()]))
+```
+
+
+### Troubleshooting
+
+In case your distribution doesn't provide freetype:
 
 ```
 cd /usr/src/
@@ -46,7 +96,7 @@ cd freetype-2.9.1
 ./configure && make && make install
 ```
 
-## Step 3. Install FreeImage
+In case your distribution doesn't provide freeimage:
 
 ```
 cd /usr/src/
@@ -57,7 +107,7 @@ cd FreeImage && \
 	make install
 ```
 
-## Step 4. Install OpenCascade (this is very time-consuming. There may be a shorter method to get the files)
+In case your distribution doesn't provide opencascade (occt):
 
 ```
 cd /usr/src/
@@ -71,43 +121,9 @@ mkdir build && \
 	make install
 ```
 
-## Step 5. Install cppyy
+### Rebuilding the Python module
 
-```
-sudo pip3 install cppyy
-```
-## Step 6. Add /usr/local/lib path
-```
-sudo ldconfig /usr/local/lib
-```
-## Step 7. Install Topologic
-
-```
-cd /usr/src/
-git clone https://github.com/NonManifoldTopology/Topologic.git
-cd Topologic
-mkdir build && \
-	cd build && \
-	cmake -DCMAKE_CXX_FLAGS=-I\ /usr/local/include/opencascade .. && \
-	make
-```
-
-## Step 8. Setup Python bindings
-
-```
-cd /usr/src/
-sudo git clone https://github.com/wassimj/topologic.git
-cd Topologic
-cd cpython
-python3 setup.py build
-python3 setup.py install
-```
-
-# Testing
-
-You can use the Python setup scripts to build the module locally.
-
-To build the module:
+In case you need to rebuild the Python module:
 
 1. cd into ./cpython/
 ```
@@ -122,29 +138,7 @@ python3 setup.py build
 python3 setup.py install
 ```
 
-# Run example
 
-There is an example test file we have used to test the module. This example, while basic, shows how you can
-use the Python/C++ to make calls directly to Topologic.
 
-Running the example:
 
-```
-cd ..
-python3 ./example.py
-```
 
-Example output
-```
-START
-1. Create Vertex (v1) at 0 0 0
-2. Create Vertex (v2) at 20 20 20
-3. Create an Edge (e1) connecting v1 to v2
-4. Print the coordinates of the start vertext of e1:
-   [0.0, 0.0, 0.0]
-5. Print the coordinates of the end vertext of e1:
-   [20.0, 20.0, 20.0]
-5. Print the coordinates of the centroid of e1:
-   [10.0, 10.0, 10.0]
-DONE
-```

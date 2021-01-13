@@ -73,6 +73,7 @@ NurbsSurface = TopologicCore.NurbsSurface
 Topology = TopologicCore.Topology
 Wire = TopologicCore.Wire
 Aperture = TopologicCore.Aperture
+CellComplex = TopologicCore.CellComplex
 CellComplexFactory = TopologicCore.CellComplexFactory
 DoubleAttribute = TopologicCore.DoubleAttribute
 Graph = TopologicCore.Graph

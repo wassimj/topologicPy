@@ -57,7 +57,10 @@ headers = [
 "Utilities/WireUtility.h"
 ]
 
-cppyy.add_include_path("/usr/local/include/opencascade")
+if (os.path.isfile("/usr/local/include/opencascade/TopoDS_Shape.hxx")):
+    cppyy.add_include_path("/usr/local/include/opencascade")
+elif (os.path.isfile("/usr/include/opencascade/TopoDS_Shape.hxx")):
+    cppyy.add_include_path("/usr/include/opencascade")
 base_dir = os.path.dirname(os.path.realpath(__file__))
 cppyy.add_include_path(base_dir + "/include")
 for header in headers:

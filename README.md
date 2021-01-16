@@ -2,7 +2,7 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 ### Install on Linux
 
-Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too.
+Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too. In these instructions we assume **python3.8** Please change according to your python version.
 
 1. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
 ```
@@ -37,11 +37,19 @@ sudo ldconfig /usr/local/lib
 cd ~/topologicbim
 git clone http://github.com/wassimj/TopologicPy
 cd TopologicPy/cpython
+sudo cp libTopologicCore.so /usr/local/lib
 python3 setup.py build
 python3 setup.py install
 ```
 
-6. **Test**
+6. **Set the CPPYY_API_PATH**
+edit the /etc/environment file and add the following line
+```
+CPPYY_API_PATH=/usr/lib/python3.8/cpycppyy/include/CPyCppyy
+```
+Save the file. Logout and log back in to continue
+
+7. **Test**
 
 In a Python console, type:
 ```
@@ -78,7 +86,20 @@ print("   "+str([ev.X(), ev.Y(), ev.Z()]))
 cv = Topology.Centroid(e1)
 print("   "+str([cv.X(), cv.Y(), cv.Z()]))
 ```
-You should see [10,10,10] as an output
+You should see the following as an output:
+```
+START
+1. Create Vertex (v1) at 0 0 0
+2. Create Vertex (v2) at 20 20 20
+3. Create an Edge (e1) connecting v1 to v2
+4. Print the coordinates of the start vertext of e1:
+   [0.0, 0.0, 0.0]
+5. Print the coordinates of the end vertext of e1:
+   [20.0, 20.0, 20.0]
+5. Print the coordinates of the centroid of e1:
+   [10.0, 10.0, 10.0]
+DONE
+```
 
 ### Troubleshooting
 

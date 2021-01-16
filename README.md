@@ -6,9 +6,8 @@ Any recent distribution should have all the tools needed. The instructions below
 
 1. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
 ```
-cd ~
-mkdir topologicbim
-cd topologicbim
+mkdir ~/topologicbim
+cd ~/topologicbim
 ```
 
 2. **Install dependencies**

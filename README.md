@@ -124,7 +124,7 @@ mkdir build && \
 
 ### Rebuilding the Python module
 
-In case you need to rebuild the Python module:
+In case you need to rebuild the Python module (make sure you have root privileges eg sudo -i):
 
 1. cd into ./cpython/
 ```

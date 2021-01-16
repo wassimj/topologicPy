@@ -32,6 +32,7 @@ sudo make install
 sudo pip3 install cppyy
 sudo ldconfig /usr/local/lib
 ```
+
 5. **Install TopologicPy**
 ```
 cd ~/topologicbim
@@ -40,7 +41,8 @@ cd TopologicPy/cpython
 python3 setup.py build
 python3 setup.py install
 ```
-5. **Test**
+
+6. **Test**
 
 In a Python console, type:
 ```

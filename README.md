@@ -1,4 +1,4 @@
-This projects creates a Topologic python module from the Topologic C++ sources (included in this repo)
+This projects creates a Topologic python module from the Topologic C++ sources (available at https://github.com/NonManifoldTopology/Topologic.git)
 
 ### Install on Linux
 

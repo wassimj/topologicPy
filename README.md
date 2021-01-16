@@ -4,10 +4,18 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too.
 
+1. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
+```
+cd ~
+mkdir topologicbim
+cd topologicbim
+```
+
 1. **Install dependencies**
 ```
 sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
+
 2. **Install Topologic**
 ```
 git clone https://github.com/NonManifoldTopology/Topologic.git
@@ -18,6 +26,7 @@ cmake ..
 make
 sudo make install
 ```
+
 3. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```
 sudo pip3 install cppyy
@@ -25,6 +34,7 @@ sudo ldconfig /usr/local/lib
 ```
 4. **Install TopologicPy**
 ```
+cd ~/topologicbim
 git clone http://github.com/wassimj/TopologicPy
 cd TopologicPy/cpython
 python3 setup.py build
@@ -40,7 +50,7 @@ If no error message appears, everything was correctly installed.
 
 ### Using the module
 
-There is an [example.py](example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
+There is an [example.py](~/topologicbim/TopologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
 
 ```
 # import the topologic submodules

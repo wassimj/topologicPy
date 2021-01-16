@@ -20,7 +20,7 @@ sudo pip3 install cppyy
 3. **Build Topologic**
 
 ```
-git clone https://github.com/wassimj/topologic.git
+git clone https://github.com/wassimj/topologicPy.git
 mkdir build
 cd build
 cmake -DCMAKE_CXX_FLAGS=-I\ /usr/include/opencascade ../Topologic

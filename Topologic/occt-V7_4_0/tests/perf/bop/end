@@ -1,3 +1,0 @@
-if { [isdraw result] } {
-  checkshape result
-}

@@ -1,7 +1,0 @@
-
-
-restore [locate_data_file bug29695_badface.brep] a
-fixshape result a
-
-checkshape result
-

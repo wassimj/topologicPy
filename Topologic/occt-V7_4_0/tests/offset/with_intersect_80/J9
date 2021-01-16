@@ -1,3 +1,0 @@
-restore [locate_data_file bug26663_test_offset_J9.brep] s
-OFFSETSHAPE ${off_param} {} ${calcul} ${type}
-

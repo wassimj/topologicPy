@@ -1,3 +1,0 @@
-[bugtraq]
-	url = https://tracker.dev.opencascade.org/view.php?id=%BUGID%
-	logregex = "(\\s)(00|#)\\d+(?!\\w)\n(\\d+)"

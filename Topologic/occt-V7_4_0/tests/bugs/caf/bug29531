@@ -1,7 +1,0 @@
-puts "==========="
-puts "OCC29531"
-puts "==========="
-
-pload QAcommands
-
-OCC29531 [locate_data_file bug29531_nist_ctc_02_asme1_ap242-2.stp]

@@ -1,5 +1,0 @@
-vertex base 0 1 2
-
-check_fsd base bin
-check_fsd base cmp
-check_fsd base gen

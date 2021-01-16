@@ -1,3 +1,0 @@
-setflags s locked
-updatetolerance result s 1
-puts [checkshape result]

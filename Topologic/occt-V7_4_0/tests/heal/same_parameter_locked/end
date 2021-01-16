@@ -1,3 +1,0 @@
-setflags s locked
-sameparameter result s 0.001
-puts [checkshape result]

@@ -20,12 +20,12 @@ sudo pip3 install cppyy
 3. **Build Topologic**
 
 ```
-git clone https://github.com/wassimj/topologicPy.git
-cd TopologicPy
+git clone https://github.com/NonManifoldTopology/Topologic.git
 mkdir build
 cd build
-cmake -DCMAKE_CXX_FLAGS=-I\ /usr/include/opencascade ../Topologic
+cmake ..
 make
+sudo make install
 ```
 4. **Install the library** (On most debian-based distros, /usr/local/lib is not part of standard library paths. If we are going to use it here (which is the recommended location for self-compiled files), we need to run ldconfig afterwards):
 

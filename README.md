@@ -42,8 +42,7 @@ python3 setup.py build
 python3 setup.py install
 ```
 
-6. **Set the CPPYY_API_PATH**
-edit the /etc/environment file and add the following line
+6. **Set the CPPYY_API_PATH**: edit the /etc/environment file and add the following line
 ```
 CPPYY_API_PATH=/usr/lib/python3.8/cpycppyy/include/CPyCppyy
 ```

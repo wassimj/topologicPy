@@ -1,24 +1,14 @@
 This projects creates a Topologic python module from the Topologic C++ sources (included in this repo)
 
-
-
 ### Install on Linux
 
 Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too.
 
 1. **Install dependencies**
-
 ```
 sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
-
-2. **Install cppyy via pip**: This is needed at runtime by the topologic module:
-
-```
-sudo pip3 install cppyy
-```
-3. **Build Topologic**
-
+2. **Install Topologic**
 ```
 git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
@@ -28,35 +18,25 @@ cmake ..
 make
 sudo make install
 ```
-4. **Install the library** (On most debian-based distros, /usr/local/lib is not part of standard library paths. If we are going to use it here (which is the recommended location for self-compiled files), we need to run ldconfig afterwards):
-
+3. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```
-sudo cp TopologicCore/libTopologicCore.so /usr/local/lib
+sudo pip3 install cppyy
 sudo ldconfig /usr/local/lib
 ```
-
-5. **Install the python module**: This will install the python module locally, in your .local/lib/python* user folder, which does not require the use of *sudo*. For system-wide install, you can use `/usr/local/lib` in the command below instead of `~/.local/lib`.
-
+4. **Install TopologicPy**
 ```
 git clone http://github.com/wassimj/TopologicPy
 cd TopologicPy/cpython
 python3 setup.py build
-python3 setup.py install --user
+python3 setup.py install
 ```
-
-
-
 ### Testing
 
 In a Python console, type:
-
 ```
 import topologic
 ```
-
 If no error message appears, everything was correctly installed.
-
-
 
 ### Using the module
 
@@ -126,22 +106,6 @@ mkdir build && \
 	make install
 ```
 
-### Rebuilding the Python module
-
-In case you need to rebuild the Python module (make sure you have root privileges eg sudo -i):
-
-1. cd into ./cpython/
-```
-cd ./cpython/
-```
-2. Run build
-```
-python3 setup.py build
-```
-2. Run install
-```
-python3 setup.py install
-```
 
 
 

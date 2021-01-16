@@ -11,12 +11,12 @@ mkdir topologicbim
 cd topologicbim
 ```
 
-1. **Install dependencies**
+2. **Install dependencies**
 ```
 sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
 
-2. **Install Topologic**
+3. **Install Topologic**
 ```
 git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
@@ -27,12 +27,12 @@ make
 sudo make install
 ```
 
-3. **Install cppyy via pip**: This is needed at runtime by the topologic module:
+4. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```
 sudo pip3 install cppyy
 sudo ldconfig /usr/local/lib
 ```
-4. **Install TopologicPy**
+5. **Install TopologicPy**
 ```
 cd ~/topologicbim
 git clone http://github.com/wassimj/TopologicPy
@@ -40,7 +40,7 @@ cd TopologicPy/cpython
 python3 setup.py build
 python3 setup.py install
 ```
-### Testing
+5. **Test**
 
 In a Python console, type:
 ```
@@ -77,7 +77,7 @@ print("   "+str([ev.X(), ev.Y(), ev.Z()]))
 cv = Topology.Centroid(e1)
 print("   "+str([cv.X(), cv.Y(), cv.Z()]))
 ```
-
+You should see [10,10,10] as an output
 
 ### Troubleshooting
 

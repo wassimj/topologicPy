@@ -21,6 +21,7 @@ sudo pip3 install cppyy
 
 ```
 git clone https://github.com/NonManifoldTopology/Topologic.git
+cd Topologic
 mkdir build
 cd build
 cmake ..
@@ -37,7 +38,10 @@ sudo ldconfig /usr/local/lib
 5. **Install the python module**: This will install the python module locally, in your .local/lib/python* user folder, which does not require the use of *sudo*. For system-wide install, you can use `/usr/local/lib` in the command below instead of `~/.local/lib`.
 
 ```
-cp -r ../cpython/topologic ~/.local/lib/python`{python3 -V | cut -b 8-10}`/site-packages
+git clone http://github.com/wassimj/TopologicPy
+cd TopologicPy/cpython
+python3 setup.py build
+python3 setup.py install --user
 ```
 
 

@@ -45,7 +45,7 @@ python3 setup.py install
 
 6. **Set the CPPYY_API_PATH**: edit the */etc/environment* file and add the following line
 ```
-CPPYY_API_PATH=/usr/lib/python3.8/cpycppyy/include/CPyCppyy
+CPPYY_API_PATH=/usr/local/include/python3.8/CPyCppyy
 ```
 Save the file. Logout and log back in to continue
 
@@ -57,13 +57,20 @@ import topologic
 ```
 If no error message appears, everything was correctly installed.
 
+8. **Install for Blender 2.91 on Ubuntu 20.04**
+Remove any previous versions of Blender
+```
+sudo apt install blender
+```
+Make sure that your blender installation is using the system's python3.8
+
 ### Using the module
 
 There is an [example.py](~/topologicbim/TopologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
 
 ```
 # import the topologic submodules
-from topologic import Vertex, Edge, Topology
+from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Graph, Topology
 
 # create a vertex
 v1 = Vertex.ByCoordinates(0,0,0) 

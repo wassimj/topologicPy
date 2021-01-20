@@ -16,7 +16,7 @@ headers = [
 "ContentManager.h",
 "Context.h",
 "ContextManager.h",
-“Dictionary.h”,
+"Dictionary.h",
 "DoubleAttribute.h",
 "Edge.h",
 "EdgeFactory.h",
@@ -80,52 +80,53 @@ cppyy.load_library("TopologicCore")
 
 from cppyy.gbl import TopologicCore
 from cppyy.gbl import TopologicUtilities
-NurbsSurface = TopologicCore.NurbsSurface
-Topology = TopologicCore.Topology
-Wire = TopologicCore.Wire
 Aperture = TopologicCore.Aperture
+ApertureFactory = TopologicCore.ApertureFactory
+Attribute = TopologicCore.Attribute
+AttributeManager = TopologicCore.AttributeManager
+#Bitwise = TopologicCore.Bitwise
+Cell = TopologicCore.Cell
 CellComplex = TopologicCore.CellComplex
 CellComplexFactory = TopologicCore.CellComplexFactory
-DoubleAttribute = TopologicCore.DoubleAttribute
-Graph = TopologicCore.Graph
-PlanarSurface = TopologicCore.PlanarSurface
-TopologyFactory = TopologicCore.TopologyFactory
-WireFactory = TopologicCore.WireFactory
-ApertureFactory = TopologicCore.ApertureFactory
 CellFactory = TopologicCore.CellFactory
-Edge = TopologicCore.Edge
-InstanceGUIDManager = TopologicCore.InstanceGUIDManager
-Shell = TopologicCore.Shell
-TopologyFactoryManager = TopologicCore.TopologyFactoryManager
-Attribute = TopologicCore.Attribute
-Cluster = TopologicCore.Cluster
-EdgeFactory = TopologicCore.EdgeFactory
-IntAttribute = TopologicCore.IntAttribute
-ShellFactory = TopologicCore.ShellFactory
-AttributeManager = TopologicCore.AttributeManager
-ClusterFactory = TopologicCore.ClusterFactory
-Face = TopologicCore.Face
-Line = TopologicCore.Line
-StringAttribute = TopologicCore.StringAttribute
-#Bitwise = TopologicCore.Bitwise
-ContentManager = TopologicCore.ContentManager
-FaceFactory = TopologicCore.FaceFactory
-ListAttribute = TopologicCore.ListAttribute
-Surface = TopologicCore.Surface
-Vertex = TopologicCore.Vertex
-Cell = TopologicCore.Cell
-Context = TopologicCore.Context
-Geometry = TopologicCore.Geometry
-NurbsCurve = TopologicCore.NurbsCurve
-TopologicalQuery = TopologicCore.TopologicalQuery
-VertexFactory = TopologicCore.VertexFactory
 CellUtility = TopologicUtilities.CellUtility
+Cluster = TopologicCore.Cluster
+ClusterFactory = TopologicCore.ClusterFactory
+ContentManager = TopologicCore.ContentManager
+Context = TopologicCore.Context
+Dictionary = TopologicCore.Dictionary
 Direction = TopologicUtilities.Direction
+DoubleAttribute = TopologicCore.DoubleAttribute
+Edge = TopologicCore.Edge
+EdgeFactory = TopologicCore.EdgeFactory
 EdgeUtility = TopologicUtilities.EdgeUtility
+Face = TopologicCore.Face
+FaceFactory = TopologicCore.FaceFactory
 FaceUtility = TopologicUtilities.FaceUtility
+Geometry = TopologicCore.Geometry
+Graph = TopologicCore.Graph
+InstanceGUIDManager = TopologicCore.InstanceGUIDManager
+IntAttribute = TopologicCore.IntAttribute
+Line = TopologicCore.Line
+ListAttribute = TopologicCore.ListAttribute
+NurbsCurve = TopologicCore.NurbsCurve
+NurbsSurface = TopologicCore.NurbsSurface
+PlanarSurface = TopologicCore.PlanarSurface
+Shell = TopologicCore.Shell
+ShellFactory = TopologicCore.ShellFactory
 ShellUtility = TopologicUtilities.ShellUtility
+StringAttribute = TopologicCore.StringAttribute
+Surface = TopologicCore.Surface
+TopologicalQuery = TopologicCore.TopologicalQuery
+Topology = TopologicCore.Topology
+TopologyFactory = TopologicCore.TopologyFactory
+TopologyFactoryManager = TopologicCore.TopologyFactoryManager
 TopologyUtility = TopologicUtilities.TopologyUtility
 TransformationMatrix2D = TopologicUtilities.TransformationMatrix2D
 Vector = TopologicUtilities.Vector
+Vertex = TopologicCore.Vertex
+VertexFactory = TopologicCore.VertexFactory
 VertexUtility = TopologicUtilities.VertexUtility
+Wire = TopologicCore.Wire
+WireFactory = TopologicCore.WireFactory
 WireUtility = TopologicUtilities.WireUtility

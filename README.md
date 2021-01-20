@@ -40,7 +40,7 @@ git clone http://github.com/wassimj/TopologicPy
 cd TopologicPy/cpython
 (Skip this) sudo cp libTopologicCore.so /usr/local/lib
 python3 setup.py build
-python3 setup.py install
+sudo python3 setup.py install
 ```
 
 6. **Set the CPPYY_API_PATH**: edit the */etc/environment* file and add the following line

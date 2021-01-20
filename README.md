@@ -29,6 +29,7 @@ At the end of this process, libTopologicCore.so should exist in /usr/local/lib
 
 4. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```
+sudo apt install python3-pip
 sudo pip3 install cppyy
 sudo ldconfig /usr/local/lib
 ```
@@ -45,15 +46,21 @@ sudo python3 setup.py install
 
 6. **Set the CPPYY_API_PATH**: edit the */etc/environment* file and add the following line
 ```
-CPPYY_API_PATH=/usr/local/include/python3.8/CPyCppyy
+sudo gedit /etc/environment
+```
+Type the following into the file that opens
+```
+CPPYY_API_PATH="/usr/local/include/python3.8/CPyCppyy"
 ```
 Save the file. Logout and log back in to continue
 
 7. **Test**
 
-In a Python console, type:
+Test in a Python 3 console:
 ```
+python3
 import topologic
+import cppyy
 ```
 If no error message appears, everything was correctly installed.
 

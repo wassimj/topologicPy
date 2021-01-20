@@ -15,6 +15,7 @@ setup.py
 ./include/ContentManager.h
 ./include/Context.h
 ./include/ContextManager.h
+./include/Dictionary.h
 ./include/DoubleAttribute.h
 ./include/Edge.h
 ./include/EdgeFactory.h

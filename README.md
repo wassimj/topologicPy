@@ -38,7 +38,7 @@ sudo ldconfig /usr/local/lib
 cd ~/topologicbim
 git clone http://github.com/wassimj/TopologicPy
 cd TopologicPy/cpython
-sudo cp libTopologicCore.so /usr/local/lib
+(Skip this) sudo cp libTopologicCore.so /usr/local/lib
 python3 setup.py build
 python3 setup.py install
 ```

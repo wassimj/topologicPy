@@ -46,11 +46,11 @@ sudo python3 setup.py install
 
 6. **Set the CPPYY_API_PATH**: edit the */etc/environment* file and add the following line
 ```
-gedit /etc/environment
+sudo gedit /etc/environment
 ```
 Type the following into the file that opens
 ```
-CPPYY_API_PATH=/usr/local/include/python3.8/CPyCppyy
+CPPYY_API_PATH="/usr/local/include/python3.8/CPyCppyy"
 ```
 Save the file. Logout and log back in to continue
 

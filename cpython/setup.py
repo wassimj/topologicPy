@@ -15,7 +15,7 @@ setup(
     license = 'AGPL',
     packages=['topologic'],
     package_dir={'': '.'},
-    data_files=[('topologic/libs', ['libTopologicCore.so'],),
+    data_files=[
         ('topologic/include', [f for f in copy_dir("./include")]),
         ('topologic/include/Utilities', [f for f in copy_dir("./include/Utilities")])
     ],

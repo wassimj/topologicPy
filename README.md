@@ -29,6 +29,7 @@ At the end of this process, libTopologicCore.so should exist in /usr/local/lib
 
 4. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```
+sudo apt install python3-pip
 sudo pip3 install cppyy
 sudo ldconfig /usr/local/lib
 ```

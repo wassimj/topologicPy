@@ -60,18 +60,16 @@ headers = [
 ]
 
 if platform.system == 'Linux':
-    if (os.path.isfile("/usr/local/include/opencascade/TopoDS_Shape.hxx")):
+    if (os.path.isdir("/usr/local/include/opencascade")):
         cppyy.add_include_path("/usr/local/include/opencascade")
-    elif (os.path.isfile("/usr/include/opencascade/TopoDS_Shape.hxx")):
+    elif (os.path.isdir("/usr/include/opencascade")):
         cppyy.add_include_path("/usr/include/opencascade")
     base_dir = os.path.dirname(os.path.realpath(__file__))
 
-    if (os.path.isfile("/usr/local/include/TopologicCore/Topology.h")):
+    if (os.path.isdir("/usr/local/include/TopologicCore")):
         topologic_inc = "/usr/local/include/TopologicCore"
-    elif (os.path.isfile("/usr/include/TopologicCore/Topology.h")):
+    elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
-    elif (os.path.isfile(base_dir + "/include/Topology.h")):
-        topologic_inc = base_dir + "/include"
 elif platform.system == 'Windows':
     pass
 

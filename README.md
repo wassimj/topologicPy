@@ -56,9 +56,11 @@ Save the file. Logout and log back in to continue
 
 7. **Test**
 
-In a Python console, type:
+Test in a Python 3 console:
 ```
+python3
 import topologic
+import cppyy
 ```
 If no error message appears, everything was correctly installed.
 

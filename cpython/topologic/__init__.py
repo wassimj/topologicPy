@@ -59,7 +59,8 @@ headers = [
 "WireFactory.h"
 ]
 
-if platform.system == 'Linux':
+system = platform.system()
+if system == 'Linux':
     if (os.path.isdir("/usr/local/include/opencascade")):
         cppyy.add_include_path("/usr/local/include/opencascade")
     elif (os.path.isdir("/usr/include/opencascade")):
@@ -70,7 +71,7 @@ if platform.system == 'Linux':
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
-elif platform.system == 'Windows':
+elif system == 'Windows':
     pass
 
 cppyy.add_include_path(topologic_inc)

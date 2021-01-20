@@ -1,5 +1,6 @@
 import cppyy
 import os
+import platform
 headers = [
 "About.h",
 "Aperture.h",
@@ -58,18 +59,21 @@ headers = [
 "WireFactory.h"
 ]
 
-if (os.path.isfile("/usr/local/include/opencascade/TopoDS_Shape.hxx")):
-    cppyy.add_include_path("/usr/local/include/opencascade")
-elif (os.path.isfile("/usr/include/opencascade/TopoDS_Shape.hxx")):
-    cppyy.add_include_path("/usr/include/opencascade")
-base_dir = os.path.dirname(os.path.realpath(__file__))
+if platform.system == 'Linux':
+    if (os.path.isfile("/usr/local/include/opencascade/TopoDS_Shape.hxx")):
+        cppyy.add_include_path("/usr/local/include/opencascade")
+    elif (os.path.isfile("/usr/include/opencascade/TopoDS_Shape.hxx")):
+        cppyy.add_include_path("/usr/include/opencascade")
+    base_dir = os.path.dirname(os.path.realpath(__file__))
 
-if (os.path.isfile("/usr/local/include/TopologicCore/Topology.h")):
-    topologic_inc = "/usr/local/include/TopologicCore"
-elif (os.path.isfile("/usr/include/TopologicCore/Topology.h")):
-    topologic_inc = "/usr/include/TopologicCore"
-elif (os.path.isfile(base_dir + "/include/Topology.h")):
-    topologic_inc = base_dir + "/include"
+    if (os.path.isfile("/usr/local/include/TopologicCore/Topology.h")):
+        topologic_inc = "/usr/local/include/TopologicCore"
+    elif (os.path.isfile("/usr/include/TopologicCore/Topology.h")):
+        topologic_inc = "/usr/include/TopologicCore"
+    elif (os.path.isfile(base_dir + "/include/Topology.h")):
+        topologic_inc = base_dir + "/include"
+elif platform.system == 'Windows':
+    pass
 
 cppyy.add_include_path(topologic_inc)
 

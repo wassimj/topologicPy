@@ -71,6 +71,8 @@ if system == 'Linux':
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
+    if (os.path.isdir("/usr/local/lib")):
+        cppyy.add_library_path("/usr/local/lib")
 elif system == 'Windows':
     pass
 

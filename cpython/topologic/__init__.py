@@ -140,7 +140,7 @@ WireUtility = TopologicUtilities.WireUtility
 # Create an Integer Structure
 cppyy.cppdef("""
    struct IntegerStruct { int getInteger; };
-   void* create_intstruct() { return new IntStruct{42}; }
+   void* create_intstruct() { return new IntegerStruct{42}; }
    """)
 # Create a Double Structure
 cppyy.cppdef("""

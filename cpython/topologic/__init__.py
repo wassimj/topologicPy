@@ -169,5 +169,4 @@ def convert_to_py_list( stl_list ):
     while (i != stl_list.end()):
        py_list.append( i.__deref__() )
        _ = i.__preinc__()
-
     return py_list

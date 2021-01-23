@@ -157,7 +157,6 @@ def create_stl_list( cppyy_data_type ):
     values = cppyy.gbl.std.list[cppyy_data_type]()
     return values
 
-
 def convert_to_stl_list( py_list, cppyy_data_type ):
     values = create_stl_list( cppyy_data_type )
     for i in py_list:

@@ -152,3 +152,23 @@ cppyy.cppdef("""
    struct StringStruct { char* getString;};
    void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
    """)
+# Helper functions
+def create_stl_list( cppyy_data_type ):
+    values = cppyy.gbl.std.list[cppyy_data_type]()
+    return values
+
+
+def convert_to_stl_list( py_list, cppyy_data_type ):
+    values = create_stl_list( cppyy_data_type )
+    for i in py_list:
+        values.push_back( i )
+    return values
+
+def convert_to_py_list( stl_list ):
+    py_list = []
+    i  =  stl_list.begin()
+    while (i != stl_list.end()):
+       py_list.append( i.__deref__() )
+       _ = i.__preinc__()
+
+    return py_list

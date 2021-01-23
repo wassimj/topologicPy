@@ -135,3 +135,20 @@ VertexUtility = TopologicUtilities.VertexUtility
 Wire = TopologicCore.Wire
 WireFactory = TopologicCore.WireFactory
 WireUtility = TopologicUtilities.WireUtility
+
+# Define structs to retrieve int, double, and string values
+# Create an Integer Structure
+cppyy.cppdef("""
+   struct IntegerStruct { int getInteger; };
+   void* create_intstruct() { return new IntStruct{42}; }
+   """)
+# Create a Double Structure
+cppyy.cppdef("""
+   struct DoubleStruct { double getDouble; };
+   void* create_doublestruct() { return new DoubleStruct{42.42}; }
+   """)
+# Create a String Structure (How??)
+cppyy.cppdef("""
+   struct StringStruct { char* getString;};
+   void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
+   """)

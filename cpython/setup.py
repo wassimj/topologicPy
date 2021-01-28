@@ -37,6 +37,6 @@ setup(
         ('topologic/include/Utilities', [f for f in copy_dir("./include/Utilities")])
     ],
     install_requires=[
-        'cppyy==1.3.0'
+        'cppyy>=1.3.0'
     ]
 )

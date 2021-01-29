@@ -93,7 +93,7 @@ if system == 'Linux':
 elif system == 'Windows':
     win_prefix = "C:/Topologic"
     topologic_inc = "{}/include".format( win_prefix )
-    cppyy.add_include_path("{}/opencascade".format( win_prefix ))
+    cppyy.add_include_path("{}/include/opencascade".format( win_prefix ))
     cppyy.add_library_path("{}/dlls".format( win_prefix ))
 
 cppyy.add_include_path(topologic_inc)

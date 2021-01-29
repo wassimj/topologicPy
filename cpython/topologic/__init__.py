@@ -91,7 +91,10 @@ if system == 'Linux':
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
 elif system == 'Windows':
-    pass
+    win_prefix = "C:/Topologic"
+    topologic_inc = "{}/include".format( win_prefix )
+    cppyy.add_include_path("{}/opencascade".format( win_prefix ))
+    cppyy.add_library_path("{}/dlls".format( win_prefix ))
 
 cppyy.add_include_path(topologic_inc)
 

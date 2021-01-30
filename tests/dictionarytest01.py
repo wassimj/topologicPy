@@ -47,7 +47,7 @@ newStringValue = dict.ValueAtKey(stringKey)
 
 # Bind Retrieved Int Value and Print it
 i = cppyy.bind_object(newIntValue.Value(), 'IntegerStruct')
-print(str(i.getInt)+" <--- Should be 340")
+print(str(i.getInteger)+" <--- Should be 340")
 
 # Bind Retrieved Double Value and Print It
 j = cppyy.bind_object(newDoubleValue.Value(), 'DoubleStruct')

@@ -75,12 +75,14 @@ def triangulate(faces):
         wires = cppyy.gbl.std.list[Wire.Ptr]()
         _ = aFace.InternalBoundaries(wires)
         stl_triangles = cppyy.gbl.std.list[Face.Ptr]()
-        if wires != None:
+        if wires != {}:
+            print("Face has holes!")
             FaceUtility.Triangulate(aFace, 0.0, stl_triangles)
         else:
             stl_triangles.push_back(aFace)
         for aTriangle in stl_triangles:
             py_triangles.append(aTriangle)
+    print(py_triangles)
     return py_triangles
 
 def meshData(topology):
@@ -146,7 +148,7 @@ class ObjectTopologic(bpy.types.Operator):
             mesh = bpy.data.meshes.new(name="TopologicTower")
             mesh.from_pydata(md[0], md[1], md[2])
             object_data_add(context, mesh)
-            g = Graph.ByTopology(cc, True, False, False, False,False, False, 0.0001)
+            g = Graph.ByTopology(cc, False, True, False, True, False, False, 0.0001)
             gw = g.Topology()
             mesh = bpy.data.meshes.new(name="TopologicDualGraph")
             md = meshData(gw)

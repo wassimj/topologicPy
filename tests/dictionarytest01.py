@@ -2,28 +2,6 @@ from topologic import Vertex, Topology, Dictionary, Attribute, AttributeManager,
 import cppyy
 from cppyy.gbl.std import string, list
 
-
-def create_stl_list( cppyy_data_type ):
-    values = cppyy.gbl.std.list[cppyy_data_type]()
-    return values
-
-
-def convert_to_stl_list( py_list, cppyy_data_type ):
-    values = create_stl_list( cppyy_data_type )
-    for i in py_list:
-        values.push_back( i )
-    return values
-
-def convert_to_py_list( stl_list ):
-    py_list = []
-    i  =  stl_list.begin()
-    while (i != stl_list.end()):
-       py_list.append( i.__deref__() )
-       _ = i.__preinc__()
-
-    return py_list
-
-
 # Create an Integer Value
 intVal = IntAttribute(340)
 
@@ -74,7 +52,7 @@ cppyy.cppdef("""
    """)
 
 # Bind Retrieved Int Value and Print it
-i = cppyy.bind_object(newIntValue.Value(), 'IntStruct')
+i = cppyy.bind_object(newIntValue.Value(), 'IntegerStruct')
 print(str(i.getInt)+" <--- Should be 340")
 
 # Create a Double Structure

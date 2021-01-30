@@ -45,30 +45,14 @@ newIntValue = dict.ValueAtKey(intKey)
 newDoubleValue = dict.ValueAtKey(doubleKey)
 newStringValue = dict.ValueAtKey(stringKey)
 
-# Create an Integer Structure
-cppyy.cppdef("""
-   struct IntStruct { int getInt; };
-   void* create_intstruct() { return new IntStruct{42}; }
-   """)
-
 # Bind Retrieved Int Value and Print it
 i = cppyy.bind_object(newIntValue.Value(), 'IntegerStruct')
 print(str(i.getInt)+" <--- Should be 340")
 
-# Create a Double Structure
-cppyy.cppdef("""
-   struct DoubleStruct { double getDouble; };
-   void* create_doublestruct() { return new DoubleStruct{42.42}; }
-   """)
 # Bind Retrieved Double Value and Print It
 j = cppyy.bind_object(newDoubleValue.Value(), 'DoubleStruct')
 print(str(j.getDouble)+" <--- Should be 120.567")
 
-# Create a String Structure (How??)
-cppyy.cppdef("""
-   struct StringStruct { char* getString;};
-   void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
-   """)
 # Bind Retrieved String Value and Print It (How??)
 k = cppyy.bind_object(newStringValue.Value(), 'StringStruct')
 print(k.getString+" <--- Should be Hello World")

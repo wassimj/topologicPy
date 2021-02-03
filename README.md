@@ -2,7 +2,7 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 ### Install on Linux
 
-Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too. These instructions have been tested to work on Ubunto Groovy Gorilla 2.10. *Please make sure you have updated your OS before attempting to install topologicPy*. In these instructions we assume *python3.8* and everythng is installed in */usr/local/lib*. Please change according to your python version.
+Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too. These instructions have been tested to work on Ubuntu Groovy Gorilla 2.10. *Please make sure you have updated your OS before attempting to install topologicPy*. In these instructions we assume *python3.8* and everythng is installed in */usr/local/lib*. Please change according to your python version.
 
 1. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
 ```

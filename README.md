@@ -99,6 +99,11 @@ print("   "+str([ev.X(), ev.Y(), ev.Z()]))
 cv = Topology.Centroid(e1)
 print("   "+str([cv.X(), cv.Y(), cv.Z()]))
 ```
+To test this file:
+```
+cd ~/topologicbim/TopologicPy
+python3 example.py
+```
 You should see the following as an output:
 ```
 START

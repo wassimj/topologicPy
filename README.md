@@ -114,7 +114,7 @@ START
    [0.0, 0.0, 0.0]
 5. Print the coordinates of the end vertext of e1:
    [20.0, 20.0, 20.0]
-5. Print the coordinates of the centroid of e1:
+6. Print the coordinates of the centroid of e1:
    [10.0, 10.0, 10.0]
 DONE
 ```

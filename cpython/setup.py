@@ -24,7 +24,7 @@ def copy_dir(dir_path):
             yield os.path.join(dirpath.split('/', 1)[1], f)
 setup(
     name = 'topologic',
-    version = '0.2',
+    version = '0.3',
     description = 'Topologic for Linux and Python 3.8',
     url = None,
     author = 'Wassim Jabi',

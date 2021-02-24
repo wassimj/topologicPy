@@ -1,79 +1,113 @@
 This projects creates a Topologic python module from the Topologic C++ sources (available at https://github.com/NonManifoldTopology/Topologic.git)
 
-### Install on Linux
+### Install on Windows 10
 
-Any recent distribution should have all the tools needed. The instructions below are for Debian-based distributions, but other distributions should have corresponding packages too. In these instructions we assume *python3.8* and everythng is installed in */usr/local/lib*. Please change according to your python version.
+The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 0.7.4* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
 
-1. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
+**Warning:** Due to a bug in cppyy this installation will not work if your user home folder has a space in its name. You will need to fix that before you install this software. There are instructions on-line on how to do that without creating a new account, but you need to be careful with things like OneDrive, Outlook and other installed software that stores the user folder name. **Do this at your own risk**
+
+1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
+
+2. **Install Visual Studio Community 2017**
+
+Download from https://visualstudio.microsoft.com/vs/older-downloads/
+
+3. **Install Git**
+
+Download from https://git-scm.com/download/win
+
+4. **Install Python 3.8.8**
+
+**WARNING:** Do not install from the Microsoft Store
+Download from https://www.python.org/downloads/windows/
+**WARNING:** When installing python make sure you tick the box on the installation screen to add python to the path
+
+5. **Install cmake 3.19.5**
+
+Download from https://cmake.org/download/
+**WARNING:** Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
+
+6. **Install cppyy via pip**: This is needed at runtime by the topologic module:
+
+Open a command prompt and type
 ```
-mkdir ~/topologicbim
-cd ~/topologicbim
+pip install cppyy
 ```
 
-2. **Install dependencies**
+7. **Install Opencascade 0.7.4.0**
+
+Download from https://old.opencascade.com/content/previous-releases
+Choose the Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (237 061 168 bytes)
+**WARNING:** This will automatically install opencascade in C:/OpenCASCADE-7.4.0-vc14-64. Do **NOT** change the location and name of this folder.
+
+8. **Fix a file in the Opencascade installation**
+
+Unfortunately, there is a small change needed in the opencascade files for TopologicPy to work. The file that needs to be editing opencascade is C:\OpenCASCADE-7.4.0-vc14-64\opencascade-7.4.0\inc\Standard_Macro.hxx. You need to change line 67 from 
 ```
-sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
+#if defined(__has_cpp_attribute)
+```
+to 
+```
+ #if defined(__has_cpp_attribute) && !defined(__CLING__)
 ```
 
-3. **Install Topologic**
+9. **Install Topologic**
+
+Go to the Start Menu in the lower left corner
+Search for the Visual Studio 2017 Folder and expand it
+Choose *x64 Native Tools Command Prompt*
+In the window that appears type:
 ```
+cd C:/Users/*homefolder*/topologicbim
 git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
+WindowsBuild.bat
 ```
-At the end of this process, libTopologicCore.so should exist in /usr/local/lib
+10. **Set the Environment Variable**
 
-4. **Install cppyy via pip**: This is needed at runtime by the topologic module:
+A window will open with a folder that has all the DLL files. Copy the path of this folder and add it to the **PATH** environment variable:
 ```
-sudo apt install python3-pip
-sudo pip3 install cppyy
-sudo ldconfig /usr/local/lib
+. In Search, search for and then select: System (Control Panel)
+. Click the Advanced system settings link.
+. Click Environment Variables. ...
+. In the Edit System Variable (or New System Variable) window, add the folder to the PATH environment variable.
 ```
+11. **Download TopologicPy**
 
-5. **Install TopologicPy**
-```
-cd ~/topologicbim
-git clone http://github.com/wassimj/TopologicPy
-cd TopologicPy/cpython
-(Skip this) sudo cp libTopologicCore.so /usr/local/lib
-python3 setup.py build
-sudo python3 setup.py install
-```
+stay in the same window
+'''
+cd C:/Users/*homefolder*/topologicbim
+git clone https://github.com/wassimj/topologicPy.git
+cd topologicPy/cpython
+python setup.py build
+python setup.py install
 
-6. **Set the CPPYY_API_PATH**: edit the */etc/environment* file and add the following line
+12. **Fix the windir_prefix**
+
+Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init.py``` file and look for the *windir_prefix*
+Set it to the location of the Topologic installation (e.g. windir_prefix = "C:/Users/*homefolder*/topologicbim/Topologic")
+
+13. **Install TopologicPy**
+
 ```
-sudo gedit /etc/environment
+cd C:/Users/*homefolder*/topologicbim/topologicPy/cpython
+python setup.py build
+python setup.py install
 ```
-Type the following into the file that opens
-```
-CPPYY_API_PATH="/usr/local/include/python3.8/CPyCppyy"
-```
-Save the file. Logout and log back in to continue
 
 7. **Test**
 
 Test in a Python 3 console:
 ```
-python3
+python
 import topologic
 import cppyy
 ```
 If no error message appears, everything was correctly installed.
 
-8. **Install for Blender 2.91 on Ubuntu 20.04**
-Remove any previous versions of Blender
-```
-sudo apt install blender
-```
-Make sure that your blender installation is using the system's python3.8
-
 ### Using the module
 
-There is an [example.py](~/topologicbim/TopologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
+There is an [example.py](C:/Users/*homefolder*/topologicbim/topologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
 
 ```
 # import the topologic submodules
@@ -114,46 +148,6 @@ START
    [10.0, 10.0, 10.0]
 DONE
 ```
-
-### Troubleshooting
-
-In case your distribution doesn't provide freetype:
-
-```
-cd /usr/src/
-wget https://netactuate.dl.sourceforge.net/project/freetype/freetype2/2.9.1/freetype-2.9.1.tar.gz
-tar xvf freetype-2.9.1.tar.gz
-cd freetype-2.9.1
-./configure && make && make install
-```
-
-In case your distribution doesn't provide freeimage:
-
-```
-cd /usr/src/
-wget https://managedway.dl.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip
-unzip FreeImage3180.zip
-cd FreeImage && \
-	make && \
-	make install
-```
-
-In case your distribution doesn't provide opencascade (occt):
-
-```
-cd /usr/src/
-wget https://github.com/tpaviot/oce/releases/download/official-upstream-packages/opencascade-7.4.0.tgz
-tar xvf opencascade-7.4.0.tgz
-cd opencascade-7.4.0
-mkdir build && \
-	cd build && \
-	cmake .. && \
-	make && \
-	make install
-```
-
-
-
 
 
 

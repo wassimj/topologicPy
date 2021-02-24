@@ -192,3 +192,14 @@ cppyy.cppdef("""
    struct StringStruct { char* getString;};
    void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
    """)
+
+cppyy.gbl.TopologicCore.Aperture.Ptr = cppyy.gbl.TopologicCore.Aperture.__class__.Ptr
+cppyy.gbl.TopologicCore.Cell.Ptr = cppyy.gbl.TopologicCore.Cell.__class__.Ptr
+cppyy.gbl.TopologicCore.CellComplex.Ptr = cppyy.gbl.TopologicCore.CellComplex.__class__.Ptr
+cppyy.gbl.TopologicCore.Cluster.Ptr = cppyy.gbl.TopologicCore.Cluster.__class__.Ptr
+cppyy.gbl.TopologicCore.Edge.Ptr = cppyy.gbl.TopologicCore.Edge.__class__.Ptr
+cppyy.gbl.TopologicCore.Face.Ptr = cppyy.gbl.TopologicCore.Face.__class__.Ptr
+cppyy.gbl.TopologicCore.Graph.Ptr = cppyy.gbl.TopologicCore.Graph.__class__.Ptr
+cppyy.gbl.TopologicCore.Shell.Ptr = cppyy.gbl.TopologicCore.Shell.__class__.Ptr
+cppyy.gbl.TopologicCore.Vertex.Ptr = cppyy.gbl.TopologicCore.Vertex.__class__.Ptr
+cppyy.gbl.TopologicCore.Wire.Ptr = cppyy.gbl.TopologicCore.Wire.__class__.Ptr

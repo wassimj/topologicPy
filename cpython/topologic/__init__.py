@@ -94,23 +94,11 @@ if system == 'Linux':
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
 elif system == 'Windows':
-    win_prefix = "C:/Users/hewha/Downloads/topologics/Topologic"
+    win_prefix = "E:/Documents/Projects/TopologicFinal/topologic"
     topologic_inc = "{}/TopologicCore/include".format( win_prefix )
     opencascade_prefix = "C:/OpenCASCADE-7.4.0-vc14-64"
-    cppyy.add_include_path(topologic_inc)
     cppyy.add_include_path("{}/opencascade-7.4.0/inc".format(opencascade_prefix))
     cppyy.add_library_path("{}/output/x64/Release".format(win_prefix))
-    libraryPaths = ["/freeimage-3.17.0-vc14-64/bin", 
-                    "/ffmpeg-3.3.4-64/bin", 
-                    "/tbb_2017.0.100/bin/intel64/vc14", 
-                    "/vtk-6.1.0-vc14-64/bin", 
-                    "/tcltk-86-64/bin", 
-                    "/qt5.11.2-vc14-64/bin", 
-                    "/freetype-2.5.5-vc14-64/bin", 
-                    "/opencascade-7.4.0/win64/vc14/bin"]
-
-
-
     cppyy.add_library_path("{}/opencascade-7.4.0/win64/vc14/bin".format(opencascade_prefix))
 
 
@@ -118,8 +106,6 @@ cppyy.add_include_path(topologic_inc)
 
 for header in headers:
     cppyy.include(topologic_inc + "/" + header )
-
-
 
 cppyy.load_library("TopologicCore")
 
@@ -189,6 +175,6 @@ cppyy.cppdef("""
    """)
 # Create a String Structure (How??)
 cppyy.cppdef("""
-   struct StringStruct { char* getString;};
+   struct StringStruct { std::string getString;};
    void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
    """)

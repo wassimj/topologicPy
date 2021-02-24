@@ -187,9 +187,9 @@ cppyy.cppdef("""
    struct DoubleStruct { double getDouble; };
    void* create_doublestruct() { return new DoubleStruct{42.42}; }
    """)
-# Create a String Structure (How??)
+# Create a String Structure
 cppyy.cppdef("""
-   struct StringStruct { char* getString;};
+   struct StringStruct { std::string getString;};
    void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
    """)
 

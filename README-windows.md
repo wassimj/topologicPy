@@ -29,11 +29,11 @@ Download from https://www.python.org/downloads/windows/
 
 Download from https://cmake.org/download/
 
-**WARNING:** Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
+Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
 
 6. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 
-Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose x64 Native Tools Command Prompt In the window that appears type:
+Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose *x64 Native Tools Command Prompt.* In the window that appears type:
 ```
 pip install cppyy
 ```
@@ -41,13 +41,22 @@ pip install cppyy
 7. **Install Opencascade 0.7.4.0**
 
 Download from https://old.opencascade.com/content/previous-releases
-Choose the Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (237 061 168 bytes)
 
-**WARNING:** This will automatically install opencascade in C:/OpenCASCADE-7.4.0-vc14-64. Do **NOT** change the location and name of this folder.
+Choose  *Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (237 061 168 bytes)*
+
+This will automatically install opencascade in:
+```
+C:/OpenCASCADE-7.4.0-vc14-64
+```
+Do **NOT** change the location and name of this folder.
 
 8. **Fix a file in the Opencascade installation**
 
-Unfortunately, there is a small change needed in the opencascade files for TopologicPy to work. The file that needs to be editing opencascade is C:\OpenCASCADE-7.4.0-vc14-64\opencascade-7.4.0\inc\Standard_Macro.hxx. You need to change line 67 from 
+Unfortunately, there is a small change needed in the opencascade files for TopologicPy to work. The file that needs to be edited in opencascade is:
+```
+C:\OpenCASCADE-7.4.0-vc14-64\opencascade-7.4.0\inc\Standard_Macro.hxx.
+```
+You need to change line 67 from 
 ```
 #if defined(__has_cpp_attribute)
 ```

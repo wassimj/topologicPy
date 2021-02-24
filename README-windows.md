@@ -21,7 +21,8 @@ Download from https://git-scm.com/download/win
 **WARNING:** Do not install from the Microsoft Store
 Download from https://www.python.org/downloads/windows/
 
-**WARNING:** When installing python make sure you tick the box on the installation screen to add python to the path
+**WARNING:** When installing python make sure you tick the box on the installation screen to add python to the path. For example see the image below:
+![python installation window](https://blog.uvm.edu/tbplante/files/2020/07/path-install.png)
 
 5. **Install cmake 3.19.5**
 

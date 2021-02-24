@@ -33,7 +33,7 @@ Download from https://cmake.org/download/
 
 6. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 
-Open a command prompt and type
+Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose x64 Native Tools Command Prompt In the window that appears type:
 ```
 pip install cppyy
 ```

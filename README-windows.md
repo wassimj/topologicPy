@@ -89,13 +89,13 @@ A window will open with a folder that has all the DLL files. Copy the path of th
 11. **Download TopologicPy**
 
 stay in the same window
-'''
+```
 cd C:/Users/*homefolder*/topologicbim
 git clone https://github.com/wassimj/topologicPy.git
 cd topologicPy/cpython
 python setup.py build
 python setup.py install
-
+```
 12. **Fix the windir_prefix**
 
 Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init.py``` file and look for the *windir_prefix*

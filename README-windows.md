@@ -109,7 +109,7 @@ python setup.py build
 python setup.py install
 ```
 
-7. **Test**
+14. **Test**
 
 Test in a Python 3 console:
 ```

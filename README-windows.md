@@ -4,7 +4,7 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 0.7.4* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
 
-**Warning:** Due to a bug in cppyy this installation will not work if your user home folder has a space in its name. You will need to fix that before you install this software. There are instructions on-line on how to do that without creating a new account, but you need to be careful with things like OneDrive, Outlook and other installed software that stores the user folder name. **Do this at your own risk**
+**WARNING:** Due to a bug in cppyy this installation will not work if your user home folder has a space in its name. You will need to fix that before you install this software. There are instructions on-line on how to do that without creating a new account, but you need to be careful with things like OneDrive, Outlook and other installed software that stores the user folder name. **Do this at your own risk**
 
 1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
 
@@ -20,11 +20,13 @@ Download from https://git-scm.com/download/win
 
 **WARNING:** Do not install from the Microsoft Store
 Download from https://www.python.org/downloads/windows/
+
 **WARNING:** When installing python make sure you tick the box on the installation screen to add python to the path
 
 5. **Install cmake 3.19.5**
 
 Download from https://cmake.org/download/
+
 **WARNING:** Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
 
 6. **Install cppyy via pip**: This is needed at runtime by the topologic module:
@@ -38,6 +40,7 @@ pip install cppyy
 
 Download from https://old.opencascade.com/content/previous-releases
 Choose the Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (237 061 168 bytes)
+
 **WARNING:** This will automatically install opencascade in C:/OpenCASCADE-7.4.0-vc14-64. Do **NOT** change the location and name of this folder.
 
 8. **Fix a file in the Opencascade installation**

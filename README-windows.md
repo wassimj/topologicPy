@@ -162,6 +162,64 @@ START
    [10.0, 10.0, 10.0]
 DONE
 ```
+### How to install for Blender
 
+Blender 2.9.2 uses python 3.7.7. Therefore, it is advisable to create a virtual environment and install cppyy and TopologicPy in that environment. You can then simply point Blender's python to use the files in that virtual envrionment. Here is one way to accomplish that using Anaconda
 
+1. **Download Anaconda** 
 
+Download the individual version of Anaconda from https://www.anaconda.com/products
+
+2. **Open the CMD.exe Prompt**
+
+After install, select the CMD.exe Prompt from the *Home* tab in the *Anaconda Navigator*
+
+3. **Create a virtual environment compatible with the version of python installed in Blender**
+
+Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.7.7. Go back to the Anaconda CMD.exe Prompt and type the following:
+
+```
+conda create --name Blender377 python=3.7.7
+conda activate Blender377
+```
+
+4. **Install cppyy**
+
+Stay in the Anaconda CMD.exe Prompt and type the following:
+
+```
+pip install cppyy
+```
+
+5. **Re-install TopologicPy**
+
+Stay in the Anaconda CMD.exe Prompt and type the following:
+
+```
+cd C:/Users/*homefolder*/topologicbim/topologicPy/cpython
+python setup.py build
+python setup.py install
+```
+6. **Test in Blender**
+
+At the scripting command prompt in Blender, type the following script
+
+```
+import sys
+sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages')
+sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages\\topologic-0.3-py3.7.egg')
+import cppyy
+from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
+
+v1 = Vertex.ByCoordinates(0,0,0)
+v2 = Vertex.ByCoordinates(10,10,10)
+e1 = Edge.ByStartVertexEndVertex(v1, v2)
+c1 = e1.Centroid()
+print([c1.X(), c1.Y(), c1.Z()])
+```
+
+If you see the following, then all is fine:
+
+```
+[5.0, 5.0, 5.0]
+```

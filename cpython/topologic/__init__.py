@@ -80,7 +80,7 @@ headers = [
 
 
 system = platform.system()
-if system == 'Linux':
+if system != 'Windows':
     if (os.path.isdir("/usr/local/include/opencascade")):
         cppyy.add_include_path("/usr/local/include/opencascade")
     elif (os.path.isdir("/usr/include/opencascade")):
@@ -93,7 +93,7 @@ if system == 'Linux':
         topologic_inc = "/usr/include/TopologicCore"
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
-elif system == 'Windows':
+else:
     win_prefix = "E:/Documents/Projects/TopologicFinal/topologic"
     topologic_inc = "{}/TopologicCore/include".format( win_prefix )
     opencascade_prefix = "C:/OpenCASCADE-7.4.0-vc14-64"

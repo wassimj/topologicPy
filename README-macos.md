@@ -86,7 +86,7 @@ Add /usr/local/lib as the last line, save and quit and try again.
 
 ### How to install for Blender
 
-Blender 2.9.2 uses python 3.7.7. Therefore, it is advisable to create a virtual environment and install cppyy and TopologicPy in that environment. You can then simply point Blender's python to use the files in that virtual envrionment. Here is one way to accomplish that using Anaconda
+Blender 2.9.2 uses python 3.7.7. Therefore, you need to create a virtual environment and install cppyy and TopologicPy in that environment then replace Blender's python folder with this one. Here is one way to accomplish that using Anaconda
 
 1. **Download Anaconda** 
 
@@ -119,14 +119,14 @@ cd ~/topologicbim/topologicPy/cpython
 python setup.py build
 python setup.py install
 ```
-6. **Test in Blender: (This is not yet working)**
+6. **Replace Blender's python folder **
 
+Rename the folder of the Blender Python environment ```/Applications/Blender/Contents/Resources/2.92/python``` to something different like ```python-original```
+Copy the anaconda virtual environment folder (e.g. ```~/opt/anaconda3/envs/Blender377```) to ```/Applications/Blender/Contents/Resources/2.92/``` and then re-name it to ``python``.
+Start Blender
 At the scripting command prompt in Blender, type the following script
 
 ```
-import sys
-sys.path.append('/Users/*homefolder*/opt/anaconda3/envs/Blender377/lib/site-packages')
-sys.path.append('/Users/*homefolder*/opt/anaconda3/envs/Blender377/lib/site-packages/topologic-0.3-py3.7.egg')
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

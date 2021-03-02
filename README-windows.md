@@ -2,7 +2,7 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 ### Install on Windows 10
 
-The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 0.7.4* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
+The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.4.0* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
 
 **WARNING:** Due to a bug in cppyy this installation will not work if your user home folder has a space in its name. You will need to fix that before you install this software. There are instructions on-line on how to do that without creating a new account, but you need to be careful with things like OneDrive, Outlook and other installed software that stores the user folder name. **Do this at your own risk**
 
@@ -38,7 +38,7 @@ Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 
 pip install cppyy
 ```
 
-7. **Install Opencascade 0.7.4.0**
+7. **Install Opencascade 7.4.0**
 
 Download from https://old.opencascade.com/content/previous-releases
 
@@ -113,40 +113,7 @@ python setup.py install
 
 Test in a Python 3 console:
 ```
-python
-import topologic
-import cppyy
-```
-If no error message appears, everything was correctly installed.
-
-### Using the module
-
-There is an [example.py](C:/Users/*homefolder*/topologicbim/topologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
-
-```
-# import the topologic submodules
-from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Graph, Topology
-
-# create a vertex
-v1 = Vertex.ByCoordinates(0,0,0) 
-
-# create another vertex
-v2 = Vertex.ByCoordinates(20,20,20)
-
-# create an edge from the two vertices
-e1 = Edge.ByStartVertexEndVertex(v1, v2)
-
-# retrieve the coordinate from the start vertex of e1
-sv = e1.StartVertex()
-print("   "+str([sv.X(), sv.Y(), sv.Z()]))
-
-# retrieve the coordinate from the end vertex of e1
-ev = e1.EndVertex()
-print("   "+str([ev.X(), ev.Y(), ev.Z()]))
-
-# retrieve the coordinates of the centroid of e1
-cv = Topology.Centroid(e1)
-print("   "+str([cv.X(), cv.Y(), cv.Z()]))
+python example.py
 ```
 You should see the following as an output:
 ```

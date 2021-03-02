@@ -7,20 +7,24 @@ These instructions have been tested to work on MacOS 10.15.7 Catalina. *Please m
 1. **Download XCode from the App Store**
 
 2. **Download Brew**
+
 Open a Terminal.app window and type the following:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 3. **Download OpenCascade** (Time consuming step)
-Open. Terminal.app window and type the following:
+
+Open a Terminal.app window and type the following:
 ```
 brew tap-new $USER/local-opencascade
 brew extract --version=7.4.0 opencascade $USER/local-opencascade
 brew install opencascade@7.4.0
 ```
 
-4. **Create a working folder**: We will assume that you will install everything in ~/topologicbim
+4. **Create a working folder**
+
+We will assume that you will install everything in ~/topologicbim
 ```
 mkdir ~/topologicbim
 cd ~/topologicbim
@@ -57,7 +61,6 @@ Test in a Python 3 console:
 ```
 cd ~/topologicbim/topologicPy
 python3 example.py
-
 ```
 You should see the following as an output:
 ```
@@ -81,7 +84,64 @@ sudo nano /etc/paths
 ```
 Add /usr/local/lib as the last line, save and quit and try again.
 
+### How to install for Blender
 
+Blender 2.9.2 uses python 3.7.7. Therefore, it is advisable to create a virtual environment and install cppyy and TopologicPy in that environment. You can then simply point Blender's python to use the files in that virtual envrionment. Here is one way to accomplish that using Anaconda
+
+1. **Download Anaconda** 
+
+Download the individual version of Anaconda from https://www.anaconda.com/products
+
+
+2. **Create a virtual environment compatible with the version of python installed in Blender**
+
+Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.7.7. Open a Terminal.app window and type the following:
+
+```
+conda create --name Blender377 python=3.7.7
+conda activate Blender377
+```
+
+4. **Install cppyy**
+
+Stay in the Anaconda CMD.exe Prompt and type the following:
+
+```
+pip install cppyy
+```
+
+5. **Re-install TopologicPy**
+
+Stay in the Terminal.app prompt and type the following:
+
+```
+cd ~/topologicbim/topologicPy/cpython
+python setup.py build
+python setup.py install
+```
+6. **Test in Blender: (This is not yet working)**
+
+At the scripting command prompt in Blender, type the following script
+
+```
+import sys
+sys.path.append('/Users/*homefolder*/opt/anaconda3/envs/Blender377/lib/site-packages')
+sys.path.append('/Users/*homefolder*/opt/anaconda3/envs/Blender377/lib/site-packages/topologic-0.3-py3.7.egg')
+import cppyy
+from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
+
+v1 = Vertex.ByCoordinates(0,0,0)
+v2 = Vertex.ByCoordinates(10,10,10)
+e1 = Edge.ByStartVertexEndVertex(v1, v2)
+c1 = e1.Centroid()
+print([c1.X(), c1.Y(), c1.Z()])
+```
+
+If you see the following, then all is fine:
+
+```
+[5.0, 5.0, 5.0]
+```
 
 
 

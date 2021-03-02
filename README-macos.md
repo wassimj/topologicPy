@@ -119,7 +119,8 @@ cd ~/topologicbim/topologicPy/cpython
 python setup.py build
 python setup.py install
 ```
-6. **Replace Blender's python folder **
+
+6. **Replace Blender's python folder**
 
 Rename the folder of the Blender Python environment ```/Applications/Blender/Contents/Resources/2.92/python``` to something different like ```python-original```
 Copy the anaconda virtual environment folder (e.g. ```~/opt/anaconda3/envs/Blender377```) to ```/Applications/Blender/Contents/Resources/2.92/``` and then re-name it to ``python``.

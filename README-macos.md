@@ -117,7 +117,7 @@ Stay in the Terminal.app prompt and type the following:
 ```
 cd ~/topologicbim/topologicPy/cpython
 python setup.py build
-python setup.py install
+sudo python setup.py install
 ```
 
 6. **Replace Blender's python folder**

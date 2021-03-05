@@ -96,7 +96,7 @@ cd topologicPy/cpython
 python setup.py build
 python setup.py install
 ```
-12. **Fix the windir_prefix**
+12. **Fix the win_prefix**
 
 Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init.py``` file and look for the *win_prefix*
 Set it to the location of the Topologic installation (e.g. win_prefix = "C:/Users/*homefolder*/topologicbim/Topologic")

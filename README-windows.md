@@ -4,7 +4,7 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.4.0* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
 
-**WARNING:** Due to a bug in cppyy this installation will not work if your user home folder has a space in its name. You will need to fix that before you install this software. There are instructions on-line on how to do that without creating a new account, but you need to be careful with things like OneDrive, Outlook and other installed software that stores the user folder name. **Do this at your own risk**
+**WARNING:** As far as I can tell, the installation only works with *Visual Studio Community 2017* I don't believe cppyy is compatible with VS 2019, but correct me if I am wrong!
 
 1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
 

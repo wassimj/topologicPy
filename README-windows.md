@@ -105,7 +105,7 @@ git clone https://github.com/wassimj/topologicPy.git
 ```
 12. **Fix the win_prefix**
 
-Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init.py``` file and look for the *win_prefix*
+Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init__.py``` file and look for the *win_prefix*
 Set it to the location of the Topologic installation (e.g. win_prefix = "C:/Users/*homefolder*/topologicbim/Topologic")
 
 13. **Install TopologicPy**
@@ -118,7 +118,7 @@ python setup.py install
 
 14. **Test**
 
-Test in a Python 3 console:
+Test:
 ```
 cd C:/Users/*homefolder*/topologicbim/topologicPy/
 python example.py

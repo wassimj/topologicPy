@@ -113,6 +113,7 @@ python setup.py install
 
 Test in a Python 3 console:
 ```
+cd C:/Users/*homefolder*/topologicbim/topologicPy/
 python example.py
 ```
 You should see the following as an output:

@@ -37,6 +37,16 @@ Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 
 ```
 pip install cppyy
 ```
+If the command pip is not found, install pip
+```
+cd C:/Users/*homefolder*/topologicbim/
+python get-pip.py
+pip --version
+```
+If the above is successful re-issue the pip command:
+```
+pip install cppyy
+```
 
 7. **Install Opencascade 7.4.0**
 

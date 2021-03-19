@@ -92,9 +92,6 @@ stay in the same window
 ```
 cd C:/Users/*homefolder*/topologicbim
 git clone https://github.com/wassimj/topologicPy.git
-cd topologicPy/cpython
-python setup.py build
-python setup.py install
 ```
 12. **Fix the win_prefix**
 

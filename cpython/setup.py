@@ -1,6 +1,6 @@
 '''
 // This file is part of Topologic software library.
-// Copyright(C) 2019, Cardiff University and University College London
+// Copyright(C) 2021, Cardiff University and University College London
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -24,8 +24,8 @@ def copy_dir(dir_path):
             yield os.path.join(dirpath.split('/', 1)[1], f)
 setup(
     name = 'topologic',
-    version = '0.3',
-    description = 'Topologic for Linux and Python 3.8',
+    version = '0.4',
+    description = 'Topologic for Python',
     url = None,
     author = 'Wassim Jabi',
     author_email = 'wassim.jabi@gmail.com',
@@ -33,6 +33,6 @@ setup(
     packages=['topologic'],
     package_dir={'': '.'},
     install_requires=[
-        'cppyy>=1.3.0'
+        'cppyy>=1.9.4'
     ]
 )

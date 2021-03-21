@@ -78,6 +78,11 @@ headers = [
 "WireFactory.h"
 ]
 
+def pythonize_topologic_printing(klass, name):
+    if 'GetTypeAsString' in klass.__dict__:
+        klass.__str__ = klass.__repr__ = lambda self: str("Topologic "+self.GetTypeAsString())
+
+cppyy.py.add_pythonization(pythonize_topologic_printing, 'TopologicCore')
 
 system = platform.system()
 if system != 'Windows':
@@ -101,13 +106,12 @@ else:
     cppyy.add_library_path("{}/output/x64/Release".format(win_prefix))
     cppyy.add_library_path("{}/opencascade-7.4.0/win64/vc14/bin".format(opencascade_prefix))
 
-
 cppyy.add_include_path(topologic_inc)
+
+cppyy.load_library("TopologicCore")
 
 for header in headers:
     cppyy.include(topologic_inc + "/" + header )
-
-cppyy.load_library("TopologicCore")
 
 from cppyy.gbl import TopologicCore
 from cppyy.gbl import TopologicUtilities

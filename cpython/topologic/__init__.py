@@ -81,6 +81,8 @@ headers = [
 def pythonize_topologic_printing(klass, name):
     if 'GetTypeAsString' in klass.__dict__:
         klass.__str__ = klass.__repr__ = lambda self: str("<Topologic "+self.GetTypeAsString()+">")
+    elif "Dictionary" in klass.__repr__():
+        klass.__str__ = klass.__repr__ = lambda self: str("<Topologic Dictionary>")
 
 cppyy.py.add_pythonization(pythonize_topologic_printing, 'TopologicCore')
 

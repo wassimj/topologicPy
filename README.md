@@ -63,7 +63,7 @@ import cppyy
 ```
 If no error message appears, everything was correctly installed.
 
-8. **Install for Blender 2.91 on Ubuntu 20.04**
+8. **Install for Blender 2.91 on Ubuntu 20.04 that uses the system's python3.8**
 Remove any previous versions of Blender
 ```
 sudo apt install blender
@@ -72,7 +72,7 @@ Make sure that your blender installation is using the system's python3.8
 
 ### Using the module
 
-There is an [example.py](~/topologicbim/TopologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
+There is an [example.py](~/topologicbim/topologicPy/example.py) test file we have used to test the module. This example shows how you can use the Python/C++ to make calls directly to Topologic:
 
 ```
 # import the topologic submodules
@@ -101,7 +101,7 @@ print("   "+str([cv.X(), cv.Y(), cv.Z()]))
 ```
 To test this file:
 ```
-cd ~/topologicbim/TopologicPy
+cd ~/topologicbim/topologicPy
 python3 example.py
 ```
 You should see the following as an output:
@@ -118,6 +118,68 @@ START
    [10.0, 10.0, 10.0]
 DONE
 ```
+### How to install for Blender 2.92 from an Anaconda Virtual Environment
+
+Blender 2.9.2 uses python 3.7.7. Therefore, you need to create a virtual environment and install cppyy and TopologicPy in that environment then replace Blender's python folder with this one. Here is one way to accomplish that using Anaconda
+
+1. **Download and Install Anaconda** 
+
+Download and install the individual version of Anaconda from https://www.anaconda.com/
+
+
+2. **Create a virtual environment compatible with the version of python installed in Blender**
+
+Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.7.7. Open a Terminal.app window and type the following:
+
+```
+conda create --name Blender377 python=3.7.7
+conda activate Blender377
+```
+
+4. **Install cppyy**
+
+Stay in the Anaconda CMD.exe Prompt and type the following:
+
+```
+pip install cppyy
+```
+
+5. **Re-install TopologicPy**
+
+Stay in the Terminal.app prompt and type the following:
+
+```
+cd ~/topologicbim/topologicPy/cpython
+python setup.py build
+sudo python setup.py install
+```
+
+6. **Replace Blender's python folder**
+
+Rename the folder of the Blender Python environment ```/Applications/Blender/Contents/Resources/2.92/python``` to something different like ```python-original```
+Copy the anaconda virtual environment folder (e.g. ```~/opt/anaconda3/envs/Blender377```) to ```/Applications/Blender/Contents/Resources/2.92/``` and then re-name it to ``python``.
+Start Blender
+At the scripting command prompt in Blender, type the following script
+
+```
+import cppyy
+from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
+
+v1 = Vertex.ByCoordinates(0,0,0)
+v2 = Vertex.ByCoordinates(10,10,10)
+e1 = Edge.ByStartVertexEndVertex(v1, v2)
+c1 = e1.Centroid()
+print([c1.X(), c1.Y(), c1.Z()])
+```
+
+If you see the following, then all is fine:
+
+```
+[5.0, 5.0, 5.0]
+```
+
+
+
 
 ### Troubleshooting
 

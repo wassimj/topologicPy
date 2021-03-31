@@ -92,8 +92,6 @@ if system != 'Windows':
         cppyy.add_include_path("/usr/local/include/opencascade")
     elif (os.path.isdir("/usr/include/opencascade")):
         cppyy.add_include_path("/usr/include/opencascade")
-    base_dir = os.path.dirname(os.path.realpath(__file__))
-
     if (os.path.isdir("/usr/local/include/TopologicCore")):
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):

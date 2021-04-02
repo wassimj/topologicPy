@@ -177,12 +177,14 @@ python setup.py install
 ```
 6. **Test in Blender**
 
-At the scripting command prompt in Blender, type the following script
+At the scripting command prompt in Blender, type the following script.
+
+**WARNING: Replace the topologic egg name with the correct and latest installed version!**
 
 ```
 import sys
 sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages')
-sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages\\topologic-0.3-py3.7.egg')
+sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages\\topologic-0.4-py3.7.egg')
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

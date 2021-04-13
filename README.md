@@ -11,11 +11,17 @@ cd ~/topologicbim
 ```
 
 2. **Install dependencies**
+ *UBUNTU (Tested)*
 ```
 sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
+ *Fedora (Suggested at OSArch.org, Untested)*
+ ```
+ sudo dnf install cmake gcc-c++ opencascade-devel libuuid-devel
+ ```
 
 3. **Install Topologic**
+  *UBUNTU (Tested)*
 ```
 git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
@@ -26,6 +32,22 @@ make
 sudo make install
 ```
 At the end of this process, libTopologicCore.so should exist in /usr/local/lib
+
+  *Fedora (Suggested at OSArch.org, Untested)*
+```
+git clone https://github.com/NonManifoldTopology/Topologic.git
+cd Topologic
+mkdir BUILD
+cd BUILD
+cmake ..
+make
+sudo make install
+
+This will likely install the library and headers to /usr/local so unless you have already edited your library path you need to do something like this:
+
+sudo sh -c "echo /usr/local/lib >> /etc/ld.so.conf"
+sudo ldconfig
+```
 
 4. **Install cppyy via pip**: This is needed at runtime by the topologic module:
 ```

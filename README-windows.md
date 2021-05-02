@@ -4,11 +4,11 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.4.0* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
 
-**WARNING:** As far as I can tell, the installation only works with *Visual Studio Community 2017* I don't believe cppyy is compatible with VS 2019, but correct me if I am wrong!
-
 1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
 
 2. **Install Visual Studio Community 2017**
+
+**WARNING:** cppyy only works with *Visual Studio Community 2017* 
 
 Download from https://visualstudio.microsoft.com/vs/older-downloads/
 
@@ -18,7 +18,8 @@ Download from https://git-scm.com/download/win
 
 4. **Install Python 3.8.8**
 
-**WARNING:** Do not install from the Microsoft Store
+**WARNING:** Do not install from the Microsoft Store.
+
 Download from https://www.python.org/downloads/windows/
 
 **WARNING:** When installing python make sure you tick the box on the installation screen to add python to the path. For example see the image below:
@@ -183,8 +184,8 @@ At the scripting command prompt in Blender, type the following script.
 
 ```
 import sys
-sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages')
-sys.path.append('C:\\Users\\*homefolder*\\.conda\\envs\\blender377\\lib\\site-packages\\topologic-0.4-py3.7.egg')
+sys.path.append('C:\\Users\\*homefolder*\\anaconda3\\envs\\blender377\\lib\\site-packages')
+sys.path.append('C:\\Users\\*homefolder*\\anaconda3\\envs\\blender377\\lib\\site-packages\\topologic-0.4-py3.7.egg')
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

@@ -189,7 +189,7 @@ C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages
 ```
 and the path to the topologic egg may then be
 ```
-C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages\\topologic-0.4-py3.7.egg")
+C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages\\topologic-0.4-py3.7.egg
 ```
 
 ```

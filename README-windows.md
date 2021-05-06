@@ -182,10 +182,20 @@ At the scripting command prompt in Blender, type the following script.
 
 **WARNING: Replace the topologic egg name with the correct and latest installed version!**
 
+Make note of the anaconda virtual environments folder path. This may be something like:
+
+```
+C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages
+```
+and the path to the topologic egg may then be
+```
+C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages\\topologic-0.4-py3.7.egg")
+```
+
 ```
 import sys
-sys.path.append('C:\\Users\\*homefolder*\\anaconda3\\envs\\blender377\\lib\\site-packages')
-sys.path.append('C:\\Users\\*homefolder*\\anaconda3\\envs\\blender377\\lib\\site-packages\\topologic-0.4-py3.7.egg')
+sys.path.append("**path to site-packages folder from above**")
+sys.path.append("**path to topologic egg from above**")
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

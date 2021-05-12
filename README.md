@@ -15,6 +15,7 @@ cd ~/topologicbim
 ```
 sudo apt-get install bzip2 unzip cmake make g++ git libgl-dev libglu-dev libpng-dev libxmu-dev libxi-dev libtbb-dev tcl-dev tk-dev zlib1g-dev libharfbuzz-dev libfreetype-dev libfreeimage-dev libocct-*-dev
 ```
+if `libocct-*-dev` cannot be found while installing the dependencies, replace it with `libocct-foundation-dev libocct-data-exchange-dev`
  *Fedora (Suggested at OSArch.org, Untested)*
  ```
  sudo dnf install cmake gcc-c++ opencascade-devel libuuid-devel
@@ -175,6 +176,8 @@ cd ~/topologicbim/topologicPy/cpython
 python setup.py build
 sudo python setup.py install
 ```
+After installation check the installed directory (in terminal), if installed directory path is in Python 3.8 use the below command to install into your created Python Blender377 environment. Remember to change 'USERNAME'
+`sudo /home/USERNAME/anaconda3/envs/Blender377/bin/python setup.py install`
 
 6. **Replace Blender's python folder**
 

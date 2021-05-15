@@ -8,9 +8,10 @@ The instructions below are for Microsoft Windows 10. In these instructions we as
 
 2. **Install Visual Studio Community 2017**
 
-**WARNING:** cppyy only works with *Visual Studio Community 2017* 
+**WARNING:** cppyy 1.9.x only works with *Visual Studio Community 2017* 
 
 Download from https://visualstudio.microsoft.com/vs/older-downloads/
+Make sure you check the box for Desktop Development with C++ 
 
 3. **Install Git**
 

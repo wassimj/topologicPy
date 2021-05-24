@@ -192,7 +192,7 @@ and the path to the topologic egg may then be
 ```
 C:\\ProgramData\anaconda3\envs\Blender377\lib\site-packages\\topologic-0.5-py3.7.egg
 ```
-** WARNING: Go into that folder and delete any previous versions of the topologic egg.**
+**WARNING: Go into that folder and delete any previous versions of the topologic egg.**
 ```
 import sys
 sys.path.append("**path to site-packages folder from above**")

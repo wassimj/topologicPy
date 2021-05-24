@@ -83,6 +83,32 @@ def pythonize_topologic_printing(klass, name):
 
 cppyy.py.add_pythonization(pythonize_topologic_printing, 'TopologicCore')
 
+def pythonify_attribute(cls, name):
+    if name == 'Attribute':            # base class, add forwarder
+        def fwd_Value(self):
+            try:
+                return self.__smartptr__().get().Value()
+            except AttributeError:
+                return self._org_Value()
+        setattr(cls, '_org_Value', cls.Value)
+        setattr(cls, 'Value', fwd_Value)
+        return True
+
+    elif name == 'StringAttribute':    # inconsistent case
+        def string_cast(self):
+            return cppyy.bind_object(self._org_Value(), 'std::string')
+        setattr(cls, '_org_Value', cls.Value)
+        setattr(cls, 'Value', string_cast)
+
+    elif 'Attribute' in name:          # consistent case
+        for key, value in cls.__dict__.items():
+            if key != 'Value' and 'Value' in key:
+                setattr(cls, 'Value', value)
+                return True
+    return True
+
+cppyy.py.add_pythonization(pythonify_attribute, 'TopologicCore')
+
 system = platform.system()
 if system != 'Windows':
     if (os.path.isdir("/usr/local/include/opencascade")):

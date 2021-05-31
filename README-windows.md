@@ -23,7 +23,7 @@ Download from https://git-scm.com/download/win
 
 Download from https://www.python.org/downloads/windows/
 
-**WARNING:** When installing python make sure you tick the box on the installation screen to **Add python 3.9 to the Path**. For example see the image below:
+**WARNING:** When installing python make sure you tick the box on the installation screen to **Add Python 3.9 to the PATH**. For example see the image below:
 
 ![python installation window](https://www.techruzz.com/images/How_to_Download_and_Install_Python_3_on_windows_10.png)
 

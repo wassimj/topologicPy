@@ -17,6 +17,7 @@
 '''
 import cppyy
 import os
+from os.path import expanduser
 import platform
 import sys
 
@@ -110,6 +111,7 @@ def pythonify_attribute(cls, name):
 cppyy.py.add_pythonization(pythonify_attribute, 'TopologicCore')
 
 system = platform.system()
+home = expanduser("~")
 if system != 'Windows':
     if (os.path.isdir("/usr/local/include/opencascade")):
         cppyy.add_include_path("/usr/local/include/opencascade")
@@ -122,12 +124,12 @@ if system != 'Windows':
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
 else:
-    win_prefix = "E:/Documents/Projects/TopologicFinal/topologic"
+    win_prefix = home+"/topologicbim/Topologic"
     topologic_inc = "{}/TopologicCore/include".format( win_prefix )
-    opencascade_prefix = "C:/OpenCASCADE-7.4.0-vc14-64"
-    cppyy.add_include_path("{}/opencascade-7.4.0/inc".format(opencascade_prefix))
+    opencascade_prefix = "C:/OpenCASCADE-7.5.0-vc14-64"
+    cppyy.add_include_path("{}/opencascade-7.5.0/inc".format(opencascade_prefix))
     cppyy.add_library_path("{}/output/x64/Release".format(win_prefix))
-    cppyy.add_library_path("{}/opencascade-7.4.0/win64/vc14/bin".format(opencascade_prefix))
+    cppyy.add_library_path("{}/opencascade-7.5.0/win64/vc14/bin".format(opencascade_prefix))
 
 cppyy.add_include_path(topologic_inc)
 

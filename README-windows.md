@@ -2,13 +2,13 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 ### Install on Windows 10
 
-The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.5.0* and *python3.9.2*. We also assume that your account has Adminstrator priviliges.
+The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.5.0* and *python3.9.X*. We also assume that your account has Adminstrator priviliges.
 
 1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
 
 2. **Install Visual Studio Community 2017**
 
-**WARNING:** cppyy 2.0.x only works with *Visual Studio Community 2017* 
+**WARNING:** cppyy 2.0.x only works with *Visual Studio Community 2017* **You must uninstall any newer Visual Studio software**
 
 Download from https://visualstudio.microsoft.com/vs/older-downloads/
 Make sure you check the box for Desktop Development with C++ 
@@ -17,7 +17,7 @@ Make sure you check the box for Desktop Development with C++
 
 Download from https://git-scm.com/download/win
 
-4. **Install Python 3.9.2**
+4. **Install Python 3.9.X**
 
 **WARNING:** Do not install from the Microsoft Store.
 
@@ -33,11 +33,11 @@ Download from https://cmake.org/download/
 
 Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
 
-6. **Install cppyy 2.0.0 via pip**: This is needed at runtime by the topologic module:
+6. **Install cppyy 2.0.X via pip**: This is needed at runtime by the topologic module:
 
 Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose *x64 Native Tools Command Prompt.* In the window that appears type:
 ```
-pip install cppyy
+pip install --upgrade --force-reinstall
 ```
 If the command pip is not found, install pip
 ```
@@ -47,7 +47,7 @@ pip --version
 ```
 If the above is successful re-issue the pip command:
 ```
-pip install cppyy
+pip install --upgrade --force-reinstall
 ```
 
 7. **Install Opencascade 7.5.0**

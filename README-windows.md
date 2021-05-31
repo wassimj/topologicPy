@@ -2,13 +2,13 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 ### Install on Windows 10
 
-The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.4.0* and *python3.8.8*. We also assume that your account has Adminstrator priviliges.
+The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.5.0* and *python3.9.2*. We also assume that your account has Adminstrator priviliges.
 
 1. **Create a topologicbim working folder**: We will assume that your home folder is called *homefolder* and you will install everything in *homefolder*/topologicbim
 
 2. **Install Visual Studio Community 2017**
 
-**WARNING:** cppyy 1.9.x only works with *Visual Studio Community 2017* 
+**WARNING:** cppyy 2.0.x only works with *Visual Studio Community 2017* 
 
 Download from https://visualstudio.microsoft.com/vs/older-downloads/
 Make sure you check the box for Desktop Development with C++ 
@@ -17,7 +17,7 @@ Make sure you check the box for Desktop Development with C++
 
 Download from https://git-scm.com/download/win
 
-4. **Install Python 3.8.8**
+4. **Install Python 3.9.2**
 
 **WARNING:** Do not install from the Microsoft Store.
 
@@ -33,7 +33,7 @@ Download from https://cmake.org/download/
 
 Scroll down and look for the latest release and choose the *Windows win64-x64 Installer* 
 
-6. **Install cppyy via pip**: This is needed at runtime by the topologic module:
+6. **Install cppyy 2.0.0 via pip**: This is needed at runtime by the topologic module:
 
 Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose *x64 Native Tools Command Prompt.* In the window that appears type:
 ```
@@ -50,15 +50,15 @@ If the above is successful re-issue the pip command:
 pip install cppyy
 ```
 
-7. **Install Opencascade 7.4.0**
+7. **Install Opencascade 7.5.0**
 
-Download from https://old.opencascade.com/content/previous-releases
+Download from https://old.opencascade.com/content/latest-release
 
-Choose  *Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (237 061 168 bytes)*
+Choose  *Windows installer VC++ 2017 64 bit: opencascade-7.5.0-vc14-64.exe (258 336 552 bytes)*
 
 This will automatically install opencascade in:
 ```
-C:/OpenCASCADE-7.4.0-vc14-64
+C:/OpenCASCADE-7.5.0-vc14-64
 ```
 Do **NOT** change the location and name of this folder.
 
@@ -66,7 +66,7 @@ Do **NOT** change the location and name of this folder.
 
 Unfortunately, there is a small change needed in the opencascade files for TopologicPy to work. The file that needs to be edited in opencascade is:
 ```
-C:\OpenCASCADE-7.4.0-vc14-64\opencascade-7.4.0\inc\Standard_Macro.hxx.
+C:\OpenCASCADE-7.5.0-vc14-64\opencascade-7.5.0\inc\Standard_Macro.hxx.
 ```
 You need to change line 67 from 
 ```
@@ -105,12 +105,7 @@ stay in the same window
 cd C:/Users/*homefolder*/topologicbim
 git clone https://github.com/wassimj/topologicPy.git
 ```
-12. **Fix the win_prefix**
-
-Edit the ```C:/Users/*homefolder*/topologicbim/topologicPy/cpython/topologic/__init__.py``` file and look for the *win_prefix*
-Set it to the location of the Topologic installation (e.g. win_prefix = "C:/Users/*homefolder*/topologicbim/Topologic")
-
-13. **Install TopologicPy**
+12. **Install TopologicPy**
 
 ```
 cd C:/Users/*homefolder*/topologicbim/topologicPy/cpython
@@ -118,7 +113,7 @@ python setup.py build
 python setup.py install
 ```
 
-14. **Test**
+13. **Test**
 
 Test:
 ```
@@ -141,7 +136,7 @@ DONE
 ```
 ### How to install for Blender
 
-Blender 2.9.2 uses python 3.7.7. Therefore, it is advisable to create a virtual environment and install cppyy and TopologicPy in that environment. You can then simply point Blender's python to use the files in that virtual envrionment. Here is one way to accomplish that using Anaconda
+Blender 2.9.3 uses python 3.9.2. Therefore, it is advisable to create a virtual environment and install cppyy and TopologicPy in that environment. You can then simply point Blender's python to use the files in that virtual envrionment. Here is one way to accomplish that using Anaconda
 
 1. **Download Anaconda** 
 
@@ -153,12 +148,13 @@ After install, select the CMD.exe Prompt from the *Home* tab in the *Anaconda Na
 
 3. **Create a virtual environment compatible with the version of python installed in Blender**
 
-Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.7.7. Go back to the Anaconda CMD.exe Prompt and type the following:
+Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.9.2. Go back to the Anaconda CMD.exe Prompt and type the following:
 
 ```
-conda create --name Blender377 python=3.7.7
-conda activate Blender377
+conda create --name Blender python=3.9.2
+conda activate Blender
 ```
+**WARNING:** You can only have one virtual environment with a name starting with "Blender".
 
 4. **Install cppyy**
 
@@ -186,17 +182,17 @@ At the scripting command prompt in Blender, type the following script.
 Make note of the anaconda virtual environments folder path. This may be something like:
 
 ```
-C:\\ProgramData\\anaconda3\\envs\\Blender377\\lib\\site-packages
+C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages
 ```
 and the path to the topologic egg may then be
 ```
-C:\\ProgramData\\anaconda3\\envs\\Blender377\\lib\\site-packages\\topologic-0.5-py3.7.egg
+C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages\\topologic-0.5-py3.9.egg
 ```
 **WARNING: Go into that folder and delete any previous versions of the topologic egg.**
 ```
 import sys
-sys.path.append("**path to site-packages folder from above**")
-sys.path.append("**path to topologic egg from above**")
+sys.path.append("**path to site-packages folder from above**") #C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages
+sys.path.append("**path to topologic egg from above**") #C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages\\topologic-0.5-py3.9.egg
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

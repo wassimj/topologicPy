@@ -191,8 +191,8 @@ C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages\\topologic-0.5-py3
 **WARNING: Go into that folder and delete any previous versions of the topologic egg.**
 ```
 import sys
-sys.path.append("**path to site-packages folder from above**") #C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages
-sys.path.append("**path to topologic egg from above**") #C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages\\topologic-0.5-py3.9.egg
+sys.path.append("**path to site-packages folder from above**") #sys.path.append("C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages")
+sys.path.append("**path to topologic egg from above**") #sys.path.append("C:\\ProgramData\\anaconda3\\envs\\Blender\\lib\\site-packages\\topologic-0.5-py3.9.egg")
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

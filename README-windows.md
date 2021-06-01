@@ -70,7 +70,7 @@ Choose *x64 Native Tools Command Prompt*
 In the window that appears type:
 ```
 cd C:/Users/*homefolder*/topologicbim
-git clone https://github.com/NonManifoldTopology/Topologic.git
+git clone https://github.com/wassimj/Topologic.git
 cd Topologic
 WindowsBuild.bat
 ```

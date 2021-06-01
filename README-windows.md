@@ -182,8 +182,32 @@ C:\\ProgramData\\anaconda3\\envs\\Blender293\\lib\\site-packages\\topologic-0.5-
 **WARNING: Go into that folder and delete any previous versions of the topologic egg.**
 ```
 import sys
-sys.path.append("C:\\ProgramData\\anaconda3\\envs\\Blender293\\lib\\site-packages") #Change if needed to match your Blender version number
-sys.path.append("C:\\ProgramData\\anaconda3\\envs\\Blender293\\lib\\site-packages\\topologic-0.5-py3.9.egg") #Change if needed to match the latest version number
+import os, re
+from os.path import expanduser
+from sys import platform
+from os.path import expanduser
+import bpy
+home = expanduser("~")
+blenderVersion =  "Blender"+str(bpy.app.version[0])+str(bpy.app.version[1])
+if platform == 'win32':
+  if os.path.exists('C:\\ProgramData\\anaconda3\\envs'):
+    conda = 'C:\\ProgramData\\anaconda3\\envs'
+  elif os.path.exists(home+'\\anaconda3\\envs'):
+    conda = home+'\\anaconda3\\envs'
+  else:
+    raise Exception("Error: Could not find: "+home+'\\anaconda3\\envs nor '+'C:\\ProgramData\\anaconda3\\envs')
+  sitePackages = '\\lib\\site-packages'
+  blenderName = '\\'+[name for name in os.listdir(conda) if name.startswith(blenderVersion)][0]
+  topologicEggName = '\\'+[name for name in os.listdir(conda+blenderName+sitePackages) if name.startswith('topologic')][0]
+  if os.path.exists(conda+blenderName+sitePackages):
+    sys.path.append(conda+blenderName+sitePackages)
+  else:
+    raise Exception("Error: Could not find "+conda+blenderName+sitePackages)
+  if os.path.exists(conda+blenderName+sitePackages+topologicEggName):
+    sys.path.append(conda+blenderName+sitePackages+topologicEggName)
+  else:
+    raise Exception("Error: Could not find "+conda+blenderName+sitePackages+topologicEggName)
+
 import cppyy
 from topologic import Vertex, Edge, Wire, Face, Shell, Cell, CellComplex, Cluster, Topology, Graph, Dictionary
 

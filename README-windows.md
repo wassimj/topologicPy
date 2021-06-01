@@ -50,34 +50,19 @@ If the above is successful re-issue the pip command:
 pip install --upgrade --force-reinstall
 ```
 
-7. **Install Opencascade 7.5.0**
+7. **Install Opencascade 7.4.0**
 
-Download from https://old.opencascade.com/content/latest-release
+Download from https://old.opencascade.com/content/previous-releases
 
-Choose  *Windows installer VC++ 2017 64 bit: opencascade-7.5.0-vc14-64.exe (258 336 552 bytes)*
+Choose  *Windows installer VC++ 2017 64 bit: opencascade-7.4.0-vc14-64.exe (258 336 552 bytes)*
 
 This will automatically install opencascade in:
 ```
-C:/OpenCASCADE-7.5.0-vc14-64
+C:/OpenCASCADE-7.4.0-vc14-64
 ```
 Do **NOT** change the location and name of this folder.
 
-8. **Fix a file in the Opencascade installation**
-
-Unfortunately, there is a small change needed in the opencascade files for TopologicPy to work. The file that needs to be edited in opencascade is:
-```
-C:\OpenCASCADE-7.5.0-vc14-64\opencascade-7.5.0\inc\Standard_Macro.hxx.
-```
-You need to change line 67 from 
-```
-#if defined(__has_cpp_attribute)
-```
-to 
-```
- #if defined(__has_cpp_attribute) && !defined(__CLING__)
-```
-
-9. **Install Topologic**
+8. **Install Topologic**
 
 Go to the Start Menu in the lower left corner
 Search for the Visual Studio 2017 Folder and expand it
@@ -89,7 +74,7 @@ git clone https://github.com/NonManifoldTopology/Topologic.git
 cd Topologic
 WindowsBuild.bat
 ```
-10. **Set the Environment Variable**
+9. **Set the Environment Variable**
 
 A window will open with a folder that has all the DLL files. Copy the path of this folder and add it to the **PATH** environment variable:
 ```
@@ -98,14 +83,14 @@ A window will open with a folder that has all the DLL files. Copy the path of th
 . Click Environment Variables. ...
 . In the Edit System Variable (or New System Variable) window, add the folder to the PATH environment variable.
 ```
-11. **Download TopologicPy**
+10. **Download TopologicPy**
 
 stay in the same window
 ```
 cd C:/Users/*homefolder*/topologicbim
 git clone https://github.com/wassimj/topologicPy.git
 ```
-12. **Install TopologicPy**
+11. **Install TopologicPy**
 
 ```
 cd C:/Users/*homefolder*/topologicbim/topologicPy/cpython
@@ -113,7 +98,7 @@ python setup.py build
 python setup.py install
 ```
 
-13. **Test**
+12. **Test**
 
 Test:
 ```

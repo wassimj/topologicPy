@@ -133,13 +133,19 @@ After install, select the CMD.exe Prompt from the *Home* tab in the *Anaconda Na
 
 3. **Create a virtual environment compatible with the version of python installed in Blender**
 
-Open Blender, choose scripting and make note of the python version being used. We will assume it is python 3.9.2. Go back to the Anaconda CMD.exe Prompt and type the following:
+* Open Blender
+* Choose scripting layout
+* At the python console type:
+```
+bpy.app.version
+```
+* Make a note of the first two numbers and combine them preceeded with the word 'Blender'. For example if you see (2,93,0) then make a note of **Blender293**. This will be the name of your virtual environment. You have to follow this rule for the scripts to work correctly.
+* Make note of the python version being used. We will assume it is python 3.9.2. Go back to the Anaconda CMD.exe Prompt and type the following:
 
 ```
-conda create --name Blender python=3.9.2
+conda create --name Blender293 python=3.9.2
 conda activate Blender
 ```
-**WARNING:** You can only have one virtual environment with a name starting with "Blender".
 
 4. **Install cppyy**
 

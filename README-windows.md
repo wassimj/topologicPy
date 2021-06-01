@@ -185,7 +185,6 @@ import sys
 import os, re
 from os.path import expanduser
 from sys import platform
-from os.path import expanduser
 import bpy
 home = expanduser("~")
 blenderVersion =  "Blender"+str(bpy.app.version[0])+str(bpy.app.version[1])

@@ -47,7 +47,7 @@ pip --version
 ```
 If the above is successful re-issue the pip command:
 ```
-pip install --upgrade --force-reinstall
+pip install cppyy --upgrade --force-reinstall
 ```
 
 7. **Install Opencascade 7.4.0**

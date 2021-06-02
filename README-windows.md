@@ -37,7 +37,7 @@ Scroll down and look for the latest release and choose the *Windows win64-x64 In
 
 Go to the Start Menu in the lower left corner Search for the Visual Studio 2017 Folder and expand it Choose *x64 Native Tools Command Prompt.* In the window that appears type:
 ```
-pip install --upgrade --force-reinstall
+pip install cppyy --upgrade --force-reinstall
 ```
 If the command pip is not found, install pip
 ```

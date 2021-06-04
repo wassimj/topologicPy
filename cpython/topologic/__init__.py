@@ -15,8 +15,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 '''
-import cppyy
 import os
+base_path = os.path.abspath(os.path.dirname(__file__))
+
+if os.path.isdir(os.path.join(base_path, "include", "api", "CPyCppyy")):
+    os.environ["CPPYY_API_PATH"] = os.path.join(base_path, "include", "api")
+
+try:
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "rootcling"), 64)
+except:
+    pass
+
+import cppyy
 from os.path import expanduser
 import platform
 import sys
@@ -121,8 +131,14 @@ if system != 'Windows':
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
+    else:
+        topologic_inc = os.path.join(base_path, "include")
+
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
+    if os.path.isdir(os.path.join(base_path, "lib")):
+        cppyy.add_library_path(os.path.join(base_path, "lib"))
+
 else:
     win_prefix = home+"/topologicbim/Topologic"
     topologic_inc = "{}/TopologicCore/include".format( win_prefix )
@@ -133,6 +149,28 @@ else:
 
 cppyy.add_include_path(topologic_inc)
 
+if system != 'Windows':
+    cppyy.load_library("libTKernel.so.7")
+    cppyy.load_library("libTKMath.so.7")
+    cppyy.load_library("libTKG2d.so.7")
+    cppyy.load_library("libTKG3d.so.7")
+    cppyy.load_library("libTKGeomBase.so.7")
+    cppyy.load_library("libTKBRep.so.7")
+    cppyy.load_library("libTKGeomAlgo.so.7")
+    cppyy.load_library("libTKTopAlgo.so.7")
+    cppyy.load_library("libTKPrim.so.7")
+    cppyy.load_library("libTKShHealing.so.7")
+    cppyy.load_library("libTKBO.so.7")
+    cppyy.load_library("libTKBool.so.7")
+    cppyy.load_library("libTKFillet.so.7")
+    cppyy.load_library("libTKOffset.so.7")
+    cppyy.load_library("libTKMesh.so.7")
+    cppyy.load_library("libTKCDF.so.7")
+    cppyy.load_library("libTKLCAF.so.7")
+    cppyy.load_library("libTKCAF.so.7")
+    cppyy.load_library("libTKXSBase.so.7")
+    cppyy.load_library("libTKIGES.so.7")
+    cppyy.load_library("libuuid.so.1")
 cppyy.load_library("TopologicCore")
 
 for header in headers:

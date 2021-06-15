@@ -15,21 +15,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 '''
-import os
-base_path = os.path.abspath(os.path.dirname(__file__))
 
-if os.path.isdir(os.path.join(base_path, "include", "api", "CPyCppyy")):
-    os.environ["CPPYY_API_PATH"] = os.path.join(base_path, "include", "api")
-
-try:
-    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "rootcling"), 64)
-except:
-    pass
-
-import cppyy
-from os.path import expanduser
-import platform
 import sys
+import os
+import platform
+from pathlib import Path
+import ctypes
+
+win_prefix = os.path.dirname(os.path.realpath(__file__))
+win_prefix = Path(win_prefix)
+win_prefix = ((win_prefix.parent).parent).parent
+sys.path.append(str(win_prefix)+'\\site-packages')
+import cppyy
 
 headers = [
 "About.h",
@@ -89,10 +86,10 @@ headers = [
 "WireFactory.h"
 ]
 
-def pythonize_topologic_printing(klass, name):
+def pythonify_topologic_printing(klass, name):
     klass.__str__ = klass.__repr__ = lambda self: str("<Topologic "+name+">")
 
-cppyy.py.add_pythonization(pythonize_topologic_printing, 'TopologicCore')
+cppyy.py.add_pythonization(pythonify_topologic_printing, 'TopologicCore')
 
 def pythonify_attribute(cls, name):
     if name == 'Attribute':            # base class, add forwarder
@@ -110,7 +107,6 @@ def pythonify_attribute(cls, name):
             return cppyy.bind_object(self._org_Value(), 'std::string')
         setattr(cls, '_org_Value', cls.Value)
         setattr(cls, 'Value', string_cast)
-
     elif 'Attribute' in name:          # consistent case
         for key, value in cls.__dict__.items():
             if key != 'Value' and 'Value' in key:
@@ -121,7 +117,7 @@ def pythonify_attribute(cls, name):
 cppyy.py.add_pythonization(pythonify_attribute, 'TopologicCore')
 
 system = platform.system()
-home = expanduser("~")
+
 if system != 'Windows':
     if (os.path.isdir("/usr/local/include/opencascade")):
         cppyy.add_include_path("/usr/local/include/opencascade")
@@ -131,47 +127,22 @@ if system != 'Windows':
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
-    else:
-        topologic_inc = os.path.join(base_path, "include")
-
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
-    if os.path.isdir(os.path.join(base_path, "lib")):
-        cppyy.add_library_path(os.path.join(base_path, "lib"))
-
+    cppyy.add_include_path(topologic_inc)
+    cppyy.load_library("TopologicCore")
 else:
-    win_prefix = home+"/topologicbim/Topologic"
+    win_prefix = os.path.dirname(os.path.realpath(__file__))
+    win_prefix = Path(win_prefix)
+    p1 = ((win_prefix.parent).parent).parent
+    win_prefix = "{}/Topologic".format(p1)
     topologic_inc = "{}/TopologicCore/include".format( win_prefix )
-    opencascade_prefix = "C:/OpenCASCADE-7.5.0-vc14-64"
-    cppyy.add_include_path("{}/opencascade-7.5.0/inc".format(opencascade_prefix))
+    opencascade_prefix = "{}/opencascade".format(p1)
+    cppyy.add_include_path("{}/inc".format(opencascade_prefix))
     cppyy.add_library_path("{}/output/x64/Release".format(win_prefix))
-    cppyy.add_library_path("{}/opencascade-7.5.0/win64/vc14/bin".format(opencascade_prefix))
-
-cppyy.add_include_path(topologic_inc)
-
-if system != 'Windows':
-    cppyy.load_library("libTKernel.so.7")
-    cppyy.load_library("libTKMath.so.7")
-    cppyy.load_library("libTKG2d.so.7")
-    cppyy.load_library("libTKG3d.so.7")
-    cppyy.load_library("libTKGeomBase.so.7")
-    cppyy.load_library("libTKBRep.so.7")
-    cppyy.load_library("libTKGeomAlgo.so.7")
-    cppyy.load_library("libTKTopAlgo.so.7")
-    cppyy.load_library("libTKPrim.so.7")
-    cppyy.load_library("libTKShHealing.so.7")
-    cppyy.load_library("libTKBO.so.7")
-    cppyy.load_library("libTKBool.so.7")
-    cppyy.load_library("libTKFillet.so.7")
-    cppyy.load_library("libTKOffset.so.7")
-    cppyy.load_library("libTKMesh.so.7")
-    cppyy.load_library("libTKCDF.so.7")
-    cppyy.load_library("libTKLCAF.so.7")
-    cppyy.load_library("libTKCAF.so.7")
-    cppyy.load_library("libTKXSBase.so.7")
-    cppyy.load_library("libTKIGES.so.7")
-    cppyy.load_library("libuuid.so.1")
-cppyy.load_library("TopologicCore")
+    cppyy.add_library_path("{}/win64/vc14/bin".format(opencascade_prefix))
+    cdll = "{}/output/x64/Release/TopologicCore.dll".format(win_prefix)
+    ctypes.CDLL(cdll, ctypes.RTLD_GLOBAL)
 
 for header in headers:
     cppyy.include(topologic_inc + "/" + header )
@@ -245,15 +216,3 @@ cppyy.cppdef("""
    struct StringStruct { std::string getString;};
    void* create_stringstruct() { return new StringStruct{"Hello World!"}; }
    """)
-'''
-cppyy.gbl.TopologicCore.Aperture.Ptr = cppyy.gbl.TopologicCore.Aperture.__class__.Ptr
-cppyy.gbl.TopologicCore.Cell.Ptr = cppyy.gbl.TopologicCore.Cell.__class__.Ptr
-cppyy.gbl.TopologicCore.CellComplex.Ptr = cppyy.gbl.TopologicCore.CellComplex.__class__.Ptr
-cppyy.gbl.TopologicCore.Cluster.Ptr = cppyy.gbl.TopologicCore.Cluster.__class__.Ptr
-cppyy.gbl.TopologicCore.Edge.Ptr = cppyy.gbl.TopologicCore.Edge.__class__.Ptr
-cppyy.gbl.TopologicCore.Face.Ptr = cppyy.gbl.TopologicCore.Face.__class__.Ptr
-cppyy.gbl.TopologicCore.Graph.Ptr = cppyy.gbl.TopologicCore.Graph.__class__.Ptr
-cppyy.gbl.TopologicCore.Shell.Ptr = cppyy.gbl.TopologicCore.Shell.__class__.Ptr
-cppyy.gbl.TopologicCore.Vertex.Ptr = cppyy.gbl.TopologicCore.Vertex.__class__.Ptr
-cppyy.gbl.TopologicCore.Wire.Ptr = cppyy.gbl.TopologicCore.Wire.__class__.Ptr
-'''

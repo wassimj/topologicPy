@@ -16,8 +16,33 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 '''
 
-import sys
 import os
+from stat import *
+base_path = os.path.abspath(os.path.dirname(__file__))
+
+if os.path.isdir(os.path.join(base_path, "include", "api", "CPyCppyy")):
+    os.environ["CPPYY_API_PATH"] = os.path.join(base_path, "include", "api")
+
+inc_path = os.path.join(base_path, "..", "cppyy_backend", "include")
+if os.path.isfile(os.path.join(inc_path, "TBaseClass.h")):
+    mtime = os.stat(os.path.join(inc_path, "TBaseClass.h"))[ST_MTIME]
+    try:
+        os.utime(inc_path,(mtime,mtime))
+    except:
+        pass
+
+try:
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "genreflex"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "rmkdepend"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "root-config"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "rootcint"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "bin", "rootcling"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "etc", "dictpch", "makepch.py"), 0o755)
+    os.chmod(os.path.join(base_path, "..", "cppyy_backend", "etc", "gdb-backtrace.sh"), 0o755)
+except:
+    pass
+
+import sys
 import platform
 from pathlib import Path
 import ctypes
@@ -127,8 +152,12 @@ if system != 'Windows':
         topologic_inc = "/usr/local/include/TopologicCore"
     elif (os.path.isdir("/usr/include/TopologicCore")):
         topologic_inc = "/usr/include/TopologicCore"
+    else:
+        topologic_inc = os.path.join(base_path, "include")
     if (os.path.isdir("/usr/local/lib")):
         cppyy.add_library_path("/usr/local/lib")
+    if os.path.isdir(os.path.join(base_path, "lib")):
+        cppyy.add_library_path(os.path.join(base_path, "lib"))
     cppyy.add_include_path(topologic_inc)
     cppyy.load_library("TopologicCore")
 else:

@@ -6,18 +6,10 @@ This projects creates a Topologic python module from the Topologic C++ sources (
 
 The instructions below are for Microsoft Windows 10. In these instructions we assume *Visual Studio Community 2017* *opencascade 7.5.0* and *python3.9.X*. We also assume that your account has Adminstrator priviliges.
 
-1. **Install Topologic and its dependencies (git and python)**
+1. **Install Topologic and needed dependencies (git, python, cmake, and cppyy)**
 Follow the instructions at http://github.com/wassimj/topologic
 
-2. **Install cppyy**: This is needed at runtime by the topologic module:
-
-```
-python -m venv topologicPy
-topologicPy\Scripts\activate
-python -m pip install cppyy --upgrade
-```
-
-3. **Install TopologicPy**
+2. **Install TopologicPy**
 
 ```
 cd C:/Users/*homefolder*/topologicbim
@@ -27,7 +19,7 @@ python setup.py build
 python setup.py install
 ```
 
-5. **Test**
+3. **Test**
 
 Test:
 ```
@@ -81,7 +73,7 @@ conda activate Blender
 Stay in the Anaconda CMD.exe Prompt and type the following:
 
 ```
-pip install cppyy
+pip install cppyy --upgrade
 ```
 
 5. **Re-install TopologicPy**
